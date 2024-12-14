@@ -1,0 +1,97 @@
+\section{Cálculo de las clases de Chern}
+
+Cuando resolvemos problemas geométricos, a menudo ocurre que los fibrados vectoriales con que trabajamos están relacionados mediante operaciones compatibles con el pullback, tales como la suma directa y el producto tensorial. Esta relación topológica entre fibrados se traduce en una relación algebraica entre sus clases de Chern. La fórmula de Whitney
+$$c_k(E \oplus F) = \sum_{i+j=k} c_i(E) \smile c_j(F)$$
+es un ejemplo de este fenómeno. En esta sección, daremos otros ejemplos similares.
+
+Como punto de partida, supongamos dados dos fibrados lineales $L_1, L_2 \to M$ y calculemos la clase $c_1(L_1 \otimes L_2)$ como función de $c_1(L_1)$ y $c_1(L_2)$. De manera análoga a la sección anterior, sea $f : M \to (\P^\infty)^2$ una función cuyas componentes $f_1, f_2$ clasifican a $L_1, L_2$. Entonces,
+$$
+L_1 \otimes L_2
+    \cong \Big( f_1^\star \circ E_1(\C^\infty) \Big) \otimes \Big( f_2^\star \circ E_1(\C^\infty) \Big)
+    \cong f^\star \circ T_{1,1}(\C^\infty),
+$$
+donde $T_{1,1}(\C^\infty)$ denota el \textbf{producto tensorial tautológico}
+$$
+T_{1,1}(\C^\infty)
+    = \Big( \pi_1^\star \circ E_1(\C^\infty) \Big) \otimes \Big( \pi_2^\star \circ E_1(\C^\infty) \Big)
+    \longrightarrow (\P^\infty)^2.
+$$
+Sea $h : (\P^\infty)^2 \to \P^\infty$ una función clasificadora de $T_{1,1}(\C^\infty)$.
+
+\begin{proposition}
+La primera clase de Chern del producto tensorial $L_1 \otimes L_2$ es
+$$c_1(L_1 \otimes L_2) = c_1(L_1) + c_1(L_2).$$
+Es decir, $c_1 : \Pic(M) \to H^2(M)$ es un homomorfismo de grupos abelianos.
+\end{proposition}
+
+\begin{proof}
+Consideremos el ramillete $\P^\infty \vee \P^\infty$ como un subcomplejo celular de $X = (\P^\infty)^2$. Dado que $\P^\infty$ sólo tiene células de dimensión par, tenemos un isomorfismo de grupos
+$$
+\varphi : H^2(X) \longrightarrow H^2(\P^\infty) \times H^2(\P^\infty), \qquad
+\varphi(\alpha) = \Big( \iota_1^\star(\alpha), \iota_2^\star(\alpha) \Big)
+$$
+donde $\iota_j : \P^\infty \to X$ es la inclusión de cada copia de $\P^\infty$ en el ramillete. Notemos que
+$$
+\iota_j^\star \circ T_{1,1}(\C^\infty)
+    \cong \Big( \iota_j^\star \circ \pi_1^\star \circ E_1(\C^\infty) \Big) \otimes
+            \Big( \iota_j^\star \circ \pi_2^\star \circ E_1(\C^\infty) \Big)
+    \cong E_1(\C^\infty),
+$$
+pues uno de los factores es $E_1(\C^\infty)$ y el otro es trivial. Esto implica que
+$$
+h^\star(c_1^1)
+    = \varphi^{-1}(c_1^1, c_1^1)
+    = \varphi^{-1}(c_1^1, 0) + \varphi^{-1}(0, c_1^1)
+    = \pi_1^\star(c_1^1) + \pi_2^\star(c_1^1).
+$$
+Por lo tanto, la primera clase de Chern de $L_1 \otimes L_2$ es
+$$c_1(L_1 \otimes L_2)
+    = f^\star \circ h^\star(c_1^1)
+    = f_1^\star(c_1^1) + f_2^\star(c_1^1)
+    = c_1(L_1) + c_1(L_2),
+$$
+que es el resultado buscado.
+\end{proof}
+
+Ahora supongamos dado un fibrado vectorial $E \to M$ de rango arbitrario $n$ y calculemos las clases de Chern de un fibrado torcido $E \otimes L$ y el fibrado dual $E^\vee$. Notemos que, por el principio del rompimiento, no hay pérdida de generalidad en asumir que $E$ es de la forma
+$$E \cong L_1 \oplus \dots \oplus L_n.$$
+Entonces, para calcular las clases de Chern de
+$$
+E \otimes L
+    \cong (L_1 \oplus \dots \oplus L_n) \otimes L
+    \cong (L_1 \otimes L) \oplus \dots \oplus (L_n \otimes L),
+$$
+$$
+E^\vee
+    \cong (L_1 \oplus \dots \oplus L_n)^\vee
+    \cong L_1^\vee \oplus \dots \oplus L_n^\vee,
+$$
+basta usar $n$ veces la proposición anterior.
+
+\begin{proposition}
+Las clases de Chern del fibrado torcido $E \otimes L$ son
+$$c_k(E \otimes L) = \sum_{i=0}^k \binom {n-i} {k-i} \, c_i(E) \smile c_1(L)^{k-i}.$$
+\end{proposition}
+
+\begin{proof}
+Por la fórmula de Whitney, la clase total de $E \otimes L$ es
+$$c(E \otimes L) = \sum_{i=0}^n c_i(E) \smile \big( 1 + c_1(L) \big)^{n-i}.$$
+Por el teorema binomial, tenemos
+$$\big( 1 + c_1(L) \big)^{n-i} = \sum_{j=0}^{n-i} \binom {n-i} j \, c_1(L)^j.$$
+Reemplazando $\big( 1 + c_1(L) \big)^{n-i}$ con su parte homogénea de grado $2k - 2i$, tenemos
+$$c_k(E \otimes L) = \sum_{i=0}^k \binom {n-i} {k-i} \, c_i(E) \smile c_1(L)^{k-i},$$
+que es el resultado buscado.
+\end{proof}
+
+\begin{proposition}
+Las clases de Chern del fibrado dual $E^\vee$ son
+$$c_i(E^\vee) = (-1)^i \, c_i(E).$$
+\end{proposition}
+
+\begin{proof}
+Como $L_j^\vee$ es el elemento inverso de $L_j$ en $\Pic(M)$, tenemos
+$$c_1(L_j^\vee) = -c_1(L_j).$$
+Entonces, la $i$-ésima clase de Chern de $E^\vee$ es
+$$c_i(E^\vee) = (-1)^i \, c_i(E),$$
+que es el resultado buscado.
+\end{proof}

@@ -1,0 +1,173 @@
+\section{El espacio clasificador}
+
+Un fibrado vectorial $E \to M$ es un paquete de espacios vectoriales abstractos $\{ E_p \}$ indizados por los puntos $p \in M$. Para facilitar la manipulación de $E$, utilizaremos encajes simultáneos de todos los espacios $E_p$ en un mismo $\C$-espacio vectorial. Denotemos por $\C^n$ un $\C$-espacio vectorial de dimensión finita ($n \in \N$) o enumerable ($n = \infty$), con la topología celular\footnote{El espacio $\C^\infty$ es el límite directo del sistema de inclusiones $\C^0 \to \C^1 \to \C^2 \to \dots$, cada una de las cuales es una aplicación celular.}. Diremos que un \textbf{anclaje} de $E$ en $\C^n$ es una función continua $f : E \to \C^n$ cuya restricción a cada fibra $E_p$ es un monomorfismo $\C$-lineal.
+
+\begin{proposition}
+Todo fibrado vectorial complejo $\pi : E \to M$ sobre un espacio paracompacto $M$ admite un anclaje $f : E \to \C^\infty$.
+\end{proposition}
+
+\begin{proof}
+Por los lemas de la sección anterior, $M$ admite
+\begin{itemize}
+    \itemsep 0em
+    \item una cobertura abierta numerable $\{ U_n \}$ tal que cada $E \vert_{U_n}$ es trivial,
+    \item una partición de la unidad $\{ \rho_n \}$ tal que cada $\rho_n$ está soportado en el respectivo $U_n$.
+\end{itemize}
+Por definición, la trivialización de $E \vert_{U_n}$ nos otorga un anclaje $g_n : E \vert_{U_n} \to \C^k$. Extendamos $g_n$ a todo $E$ usando $f_n(x) = \rho_n(\pi(x)) \cdot g_n(x)$. Entonces,
+$$f(x) = \Big( f_0(x), f_1(x), f_2(x), \dots \Big)$$
+es un anclaje de todo $E$ en $(\C^k)^\infty \cong \C^\infty$.
+\end{proof}
+
+Dado un anclaje $f : E \to \C^n$, es fácil generar muchos otros anclajes $E \to \C^n$ que, en esencia, son otras presentaciones de $f$. Por ejemplo, $T \circ f$, donde $T : \C^n \to \C^n$ es un operador $\C$-lineal inyectivo. Para eliminar la distinción formal entre anclajes ``esencialmente iguales'', diremos que dos anclajes $E \to \C^n$ son \textbf{homotópicos} si están unidos por una \textbf{homotopía de anclajes}, i.e., una homotopía ordinaria $h_t : E \to \C^n$ que, en cada instante $t \in I$, es un anclaje.
+
+\begin{proposition}
+Todo par de anclajes $f, g : E \to \C^\infty$ es homotópico.
+\end{proposition}
+
+\begin{proof}
+Definamos los operadores $\C$-lineales $A, B : \C^\infty \to \C^\infty$ por
+$$A(x_0, x_1, \dots) = (x_0, 0, x_1, 0, \dots), \qquad B(x_0, x_1, \dots) = (0, x_0, 0, x_1, \dots).$$
+Utilizando la notación $[p,q]_t = (1 - t) \cdot p + t \cdot q$, definamos la homotopía de anclajes
+$$
+h_t =
+  \begin{cases}
+    [f, Af]_{3t},      & \text{si } 3t \in [0,1], \\
+    [Af, Bg]_{3t - 1}, & \text{si } 3t \in [1,2], \\
+    [Bg, g]_{3t - 2},  & \text{si } 3t \in [2,3].
+  \end{cases}
+$$
+Los extremos de $h$ son $h_0 = f$ y $h_1 = g$. Por ende, $f$ y $g$ son homotópicos.
+\end{proof}
+
+A continuación, construiremos un espacio $\Gr_k(\C^n)$, llamado el \textbf{grassmanniano de $k$-planos} en $\C^n$, cuyos puntos se identifican de manera natural con los $\C$-subespacios vectoriales de $\C^n$ de dimensión $k$. De esta manera, si $E \to M$ es un fibrado vectorial de rango $k$, entonces un anclaje $f : E \to \C^n$ determinará una \textbf{función clasificadora}
+$$\widetilde f : M \longrightarrow \Gr_k(\C^n), \qquad \widetilde f(p) = f(E_p)$$
+y, recíprocamente, $\widetilde f$ nos permitirá reconstruir un fibrado vectorial isomorfo a $E$.
+
+Notemos que, a nivel de conjuntos, no hay mucho que definir: ciertamente el conjunto de los $k$-planos en $\C^n$ está bien definido. Lo realmente interesante (y no trivial) es hallar una topología apropiada para $\Gr_k(\C)$, que formalice la idea intuitiva de que dos $k$-planos son cercanos si sus ``pendientes'' o ``inclinaciones'' son cercanas.
+
+\begin{example}
+Definamos $g : \C^2 \to \Gr_1(\C^2)$ por
+$$
+g(p) =
+  \begin{cases}
+    X, & \text{si } p \in X, \\
+    Y, & \text{si } p \notin X,
+  \end{cases}
+$$
+donde $X, Y$ son los ejes coordenados de $\C^2$. Esta asignación de rectas proviene de la foliación del ejemplo 1.2 (usando $f(x) = 0$), que \textit{no} posee un fibrado tangente.
+
+Por supuesto, el problema con $g$ es que la pendiente de $g(p)$ cambia abruptamente cuando $p$ varía a lo largo de un camino que cruza el eje $X$. Si $g$ fuese continua, entonces
+$$\{ X, Y \} = g(\C^2) = g(\overline {\C^2 \setminus X}) \subset \overline {g(\C^2 \setminus X)} = \overline {\{ Y \}}.$$
+Pero $\Gr_1(\C^2) = \P^1$ es la esfera de Riemann, que es Hausdorff, así que $\overline {\{ Y \}} = \{ Y \}$.
+\end{example}
+
+El grassmanniano $\Gr_k(\C^n)$ se construye como el espacio de órbitas de la acción de $\GL_k(\C)$ sobre el \textbf{espacio de Stiefel} $V_k(\C^n)$, cuyos puntos son las $k$-tuplas linealmente independientes en el producto cartesiano $\C^{n \times k} = \C^n \times \dots \times \C^n$. A nivel de conjuntos, esto funciona porque
+\begin{itemize}
+    \itemsep 0em
+    \item Un punto de $\C^{n \times k}$ está en $V_k(\C^n)$ si y sólo si es base de algún $k$-plano en $\C^n$.
+    \item Dos puntos de $V_k(\C^n)$ son bases del mismo $k$-plano si y sólo si están relacionados por una matriz de cambio de base en $\GL_k(\C)$.
+\end{itemize}
+
+Identifiquemos los elementos de $\C^{n \times k}$ con matrices $n \times k$. (Para $n = \infty$, estas matrices deben tener una cantidad finita de entradas no nulas.) Si denotamos por $\Phi$ el conjunto de los menores $k \times k$, pensados como funciones $\varphi : \C^{n \times k} \to \C^{k \times k}$, entonces
+$$V_k(\C^n) = \bigcup_{\varphi \in \Phi} U_\varphi, \qquad U_\varphi = \varphi^{-1} \circ \GL_k(\C)$$
+es una unión de abiertos de $\C^{n \times k}$. Por ende, $V_k(\C^n)$ es abierto en $\C^{n \times k}$. Daremos a $\Gr_k(\C^n)$ la topología cociente, i.e., decretamos que la proyección canónica $\pi : V_k(\C^n) \to \Gr_k(\C^n)$ es continua y abierta.
+
+Para cada menor $\varphi \in \Phi$, denotemos por $\varphi^\perp : \C^{n \times k} \to \C^{(n-k) \times k}$ la proyección que descarta las entradas de $\varphi$ y retiene todas las demás. El homeomorfismo $\GL_k(\C)$-equivariante
+$$
+T_\varphi : U_\varphi \longrightarrow \C^{(n-k) \times k} \times \GL_k(\C^n), \qquad
+T_\varphi(x) = \Big( \varphi^\perp(x) \cdot \varphi(x)^{-1}, \varphi(x) \Big)
+$$
+es una trivialización local de la acción por derecha $V_k(\C^n) \times \GL_k(\C) \to V_k(\C^n)$. Entonces,
+\begin{itemize}
+    \itemsep 0em
+    \item El \textbf{fibrado de Stiefel} $\pi : V_k(\C^n) \to \Gr_k(\C^n)$ es un $\GL_k(\C)$-fibrado principal.
+    \item El grassmanniano $\Gr_k(\C^n)$ admite una cobertura por abiertos $\widetilde U_\varphi = \pi(U_\varphi)$ homeomorfos al espacio vectorial $\C^{(n-k) \times k}$, en los cuales el fibrado de Stiefel es trivial.
+\end{itemize}
+
+\begin{proposition}
+Sea $E \to M$ un fibrado vectorial de rango $k$. Dado un anclaje $f : E \to \C^n$, la función clasificadora $\widetilde f : M \to \Gr_k(\C^n)$ es continua.
+\end{proposition}
+
+\begin{proof}
+Dada una base local $v_1, \dots, v_k$ de $E$ en un abierto $U \subset M$, la restricción
+$$\widetilde f \vert_U : U \longrightarrow \Gr_k(\C^n), \qquad \widetilde f(p) = \pi \Big( f \circ v_1(p), \dots, f \circ v_k(p) \Big)$$
+es una función continua. Como las trivializaciones de $E$ cubren $M$, entonces $\widetilde f$ es continua.
+\end{proof}
+
+\begin{corollary}
+Sea $E \to M$ un fibrado vectorial de rango $k$. Dada una homotopía de anclajes $h_t : E \to \C^n$, la familia de funciones clasificadoras $\widetilde h_t : M \to \Gr_k(\C^n)$ es una homotopía.
+\end{corollary}
+
+\begin{proof}
+Pensemos en $h_t$ como un único anclaje $h : E \times I \to \C^n$ del fibrado $E \times I \to M \times I$. Por la proposición anterior, la función clasificadora $\widetilde h : M \times I \to \Gr_k(\C^n)$ es continua. Entonces $\widetilde h_t$ es una homotopía en el sentido ordinario.
+\end{proof}
+
+El \textbf{fibrado tautológico} sobre $\Gr_k(\C^n)$ se define como el producto balanceado
+$$
+E_k(\C^n)
+    = V_k(\C^n) \times^{\GL_k(\C)} \C^k
+    = \dfrac {V_k(\C^n) \times \C^k} {\Big \langle (x \cdot g, z) \sim (x, g \cdot z) : g \in \GL_k(\C) \Big \rangle}
+$$
+con la proyección canónica sobre el grassmanniano
+$$E_k(\C^n) \longrightarrow \Gr_k(\C^n) = V_k(\C^n) \times^{\GL_n(\C)} \{ \pt \}$$
+que descarta la coordenada vectorial.
+
+\begin{theorem}
+El fibrado tautológico $E_k(\C^n) \to \Gr_k(\C^n)$ es un fibrado vectorial de rango $k$ con un anclaje canónico $\tau : E_k(\C^n) \to \C^n$ clasificado por la función identidad $\widetilde \tau = \id$.
+\end{theorem}
+
+\begin{proof}
+Sea $U \subset \Gr(\C^n)$ un abierto en el cual $V_k(\C^n)$ es trivial. Entonces,
+$$
+E_k(\C^n) \Big \vert_U
+    = V_k(\C^n) \Big \vert_U \times^{\GL_k(\C)} \C^k
+    \cong \Big( U \times \GL_k(\C) \Big) \times^{\GL_k(\C)} \C^k
+    \cong U \times \C^k
+$$
+es una trivialización local de $E_k(\C^n) \to \Gr_k(\C^n)$ como fibrado topológico con fibra $\C^k$.
+
+Como el grupo lineal $\GL_k(\C)$ actúa de manera trivial en el factor $U$ y por transformaciones lineales en el factor $\C^k$, toda función de transición $\GL_k(\C)$-equivariante de $E_k(\C^n)$ definida en $U$ necesariamente es de la forma
+$$U \times \C^k \longrightarrow U \times \C^k, \qquad (x,v) \longmapsto \Big( x, g(x) \cdot v \Big),$$
+donde $g : U \to \GL_k(\C)$ es una función continua. Por lo tanto, $E_k(\C^n) \to \Gr_k(\C^n)$ es un fibrado vectorial de rango $k$.
+
+Finalmente, el anclaje tautológico de $E_k(\C^n)$ en $\C^n$ está definido por
+$$\tau : E_k(\C^n) \longrightarrow \C^n, \qquad \tau(v,z) = v \cdot z,$$
+donde $v \in V_k(\C^n)$ es una matriz $n \times k$ cuyas columnas son base de un $k$-plano $\pi(v) \in \Gr_k(\C^n)$ y $z \in \C^k$ es un vector de coordenadas en esta base. La función clasificadora de $\tau$ es
+$$
+\widetilde \tau : \Gr_k(\C^n) \longrightarrow \Gr_k(\C^n), \qquad
+\widetilde \tau \circ \pi(v) = \pi(v),
+$$
+es decir, la función identidad.
+\end{proof}
+
+\begin{lemma}
+Todo anclaje $f : E \to \C^n$ de un fibrado vectorial $p : E \to M$ de rango $k$ induce un isomorfismo de fibrados $\psi : E \to F$, donde $F$ es el fibrado pullback
+$$F = \widetilde f^\star \circ E_k(\C^n) = M \times_{\Gr_k(\C^n)} V_k(\C^n) \times^{\GL_k(\C)} \times \C^k$$
+a lo largo de la función clasificadora $\widetilde f : M \to \Gr_k(\C^n)$. Además, $f = \widetilde f^\star \tau \circ \psi$, donde
+$$\widetilde f^\star \tau : F \longrightarrow \C^n, \qquad \widetilde f^\star \tau(p,v,z) = v \cdot z$$
+es el anclaje de $F$ inducido por el anclaje canónico $\tau : E_k(\C^n) \to \C^n$.
+\end{lemma}
+
+\begin{proof}
+A saber, $\psi(x) = \Big( p(x), v, z \Big)$, donde $f(x) = v \cdot z$.
+\end{proof}
+
+\begin{theorem}[Clasificación de fibrados vectoriales]
+Dado un espacio paracompacto $M$, existe una correspondencia biyectiva canónica entre
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item Las clases de isomorfismo de fibrados vectoriales $E \to M$ de rango $k$.
+    \item Las clases de homotopía de funciones $\widetilde f : M \to \Gr_k(\C^\infty)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Sea $E \to M$ un fibrado vectorial de rango $k$. Entonces,
+\begin{itemize}
+    \itemsep 0em
+    \item Por 3.7 y 3.13, $E$ admite una función clasificadora $\widetilde f : M \to \Gr_k(\C^\infty)$.
+    \item Por 3.8 y 3.11, $E$ determina la clase de homotopía de $\widetilde f$.
+    \item Por 3.5, la clase de homotopía de $\widetilde f$ determina la clase de isomorfismo de $E$.
+\end{itemize}
+Esto establece la correspondencia solicitada.
+\end{proof}

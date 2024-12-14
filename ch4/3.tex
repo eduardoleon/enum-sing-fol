@@ -1,0 +1,102 @@
+\section{Las clases de Chern universales}
+
+La única estrategia viable para hallar las clases de Chern universales $c_i^n$ es romper el fibrado tautológico $E_n(\C^\infty) \to \Gr_n(\C^\infty)$ en una bandera completa
+$$0 = F_0 \subset F_1 \subset \dots \subset F_n = E_n(\C^\infty) \longrightarrow \Gr_n(C^\infty)$$
+cuyos cocientes lineales $L_j = F_j / F_{j-1}$ son fáciles de clasificar. Sin embargo, aún no conocemos el anillo de cohomología de $\Gr_n(\C^\infty)$, lo cual nos obliga a usar métodos indirectos para demostrar que un rompimiento putativo de $E_n(\C^\infty)$ es, en efecto, un rompimiento.
+
+En cualquier caso, sabemos que existen muchos rompimientos de $E_n(\C^\infty)$ y aún no tenemos razones sólidas para escoger uno en particular. A fin de escoger el rompimiento más conveniente, analizaremos toda la información que se puede extraer de una bandera completa.
+
+\begin{proposition}
+Sea $E \to M$ un fibrado vectorial que contiene una bandera completa
+$$0 = F_0 \subset F_1 \subset \dots \subset F_n = E \longrightarrow M$$
+con cocientes lineales $L_j = F_j / F_{j-1}$. Entonces $E \cong L_1 \oplus \dots \oplus L_n$.
+\end{proposition}
+
+\begin{proof}
+Tomemos un anclaje aribtrario $E \to \C^\infty$. El producto interno estándar de $\C^\infty$ induce un producto interno sobre cada fibra anclada $E_p \subset \C^\infty$ que depende continuamente de $p \in M$. Así, cada $L_j$ es isomorfo al complemento ortogonal de $F_{j-1}$ en $F_j$. Inductivamente, tenemos
+$$F_j \cong L_1 \oplus \dots \oplus L_j.$$
+Tomando $j = n$, tenemos el resultado buscado.
+\end{proof}
+
+La proposición anterior nos dice que clasificar la bandera completa $\{ F_j \}$ equivale a clasificar sus cocientes lineales $\{ L_j \}$, que pueden ser escogidos arbitrariamente. Por ello, diremos que una función $f : M \to (\P^\infty)^n$ es una \textbf{función clasificadora} de $\{ F_j \}$ si cada componente $f_j : M \to \P^\infty$ es una función clasificadora del respectivo cociente lineal $L_j$.
+
+\begin{proposition}
+Existe una correspondencia biyectiva canónica entre
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item Las clases de isomorfismo de banderas completas $0 = F_0 \subset F_1 \subset \dots \subset F_n = E \to M$.
+    \item Las clases de homotopía de funciones $f : M \to (\P^\infty)^n$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Las siguientes proposiciones son equivalentes:
+\begin{itemize}
+    \itemsep 0em
+    \item Las funciones $f, g : M \to (\P^\infty)^n$ clasifican a banderas isomorfas.
+    \item Para cada $j = 1, \dots, n$, las componentes $f_j, g_j$ clasifican a cocientes lineales isomorfos.
+    \item Para cada $j = 1, \dots, n$, las componentes $f_j, g_j$ son homotópicas.
+    \item Las funciones $f, g$ son homotópicas.
+\end{itemize}
+Esto establece la correspondencia solicitada.
+\end{proof}
+
+La \textbf{bandera tautológica} se define como la bandera completa sobre $(\P^\infty)^n$ clasificada por la función identidad $\id : (\P^\infty)^n \to (\P^\infty)^n$. Los cocientes lineales de esta bandera se pueden ver como ``copias independientes'' del fibrado tautológico de líneas $E_1(\C^\infty)$, ya que cada uno es clasificado por una de las proyecciones canónicas
+$$\pi_j : (\P^\infty)^n \longrightarrow \P^\infty, \qquad \pi_j(x_1, \dots, x_n) = x_j.$$
+Entonces, el fibrado total de esta bandera es la $n$-ésima potencia cartesiana
+$$E_1(\C^\infty)^n = \bigoplus \nolimits_j \Big( \pi_j \circ E_1(\C^\infty) \Big) \longrightarrow (\P^\infty)^n.$$
+Sea $h : (\P^\infty)^n \to \Gr_n(\C^\infty)$ una función clasificadora de $E_1(\C^\infty)^n$.
+
+\begin{lemma}
+La función $h$ rompe totalmente al fibrado tautológico $E_n(\C^\infty)$.
+\end{lemma}
+
+\begin{proof}
+Tomemos un rompimiento total arbitrario de $E_n(\C^\infty)$, digamos,
+$$0 = F_0 \subset F_1 \subset \dots \subset F_n = E \longrightarrow M.$$
+Notemos que, si $f$ es una función clasificadora de la bandera $\{ F_j \}$, entonces $h \circ f$ es una función clasificadora del fibrado total $E \to M$. Como $h \circ f$ rompe a $E_n(\C^\infty)$, el pullback
+$$(h \circ f)^\star = f^\star \circ h^\star : H^\star \circ \Gr_n(\C^\infty) \longrightarrow H^\star(M)$$
+es un homomorfismo de anillos inyectivo. Esto implica que $h^\star$ es inyectivo. Por lo tanto, $h$ rompe totalmente a $E_n(\C^\infty)$.
+\end{proof}
+
+La bandera tautológica, aparte de ser canónica por mérito propio, también tiene propiedades algebraicas muy convenientes. La primera de ellas es que el anillo de cohomología de su espacio base $M = (\P^\infty)^n$ es fácil de calcular. Por la fórmula de Künneth \cite[p. 216]{hatcher1}, tenemos
+$$
+H^\star(M)
+    \cong H^\star(\P^\infty) \otimes \dots \otimes H^\star(\P^\infty)
+    \cong \Z[\xi_1, \dots, \xi_n],
+$$
+donde $\xi_1, \dots, \xi_n$ son los generadores canónicos de cada copia de $H^\star(\P^\infty) \cong \Z[\xi]$.
+
+La segunda propiedad clave es el espacio base $M$ tiene una acción natural de $S_n$ que permuta las copias de $\P^\infty$. Analizando el efecto de esta acción sobre la bandera tautológica, obtendremos suficiente información para calcular $H^\star \circ \Gr_n(\C^\infty)$ y las clases universales $c_i^n$.
+
+\begin{theorem}[Clases de Chern universales]
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item $H^\star \circ \Gr_n(\C^\infty)$ es isomorfo al anillo de polinomios simétricos
+    $$H^\star(M)^{S_n} \cong \Z[\xi_1, \dots, \xi_n]^{S_n} = \Z[\sigma_1, \dots, \sigma_n],$$
+    donde $\sigma_j$ es el $j$-ésimo polinomio simétrico elemental en $\xi_1, \dots, \xi_n$.
+    
+    \item $c_0^n = 1$ es la identidad multiplicativa de $H^\star \circ \Gr_n(\C^\infty)$.
+    \item $c_1^n, \dots, c_n^n$ generan libremente a $H^\star \circ \Gr_n(\C^\infty)$.
+    \item $c_i^n = 0$, para todo $i > n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+La acción de $S_n$ permuta los cocientes lineales de la bandera tautológica. Sin embargo, esto no tiene efecto sobre el fibrado total $E_1(\C^\infty)^n$. Entonces, $h$ es homotópica a $h \circ g$ para toda permutación $g \in S_n$. Por lo tanto, $h^\star$ es $S_n$-invariante y su imagen está contenida en el anillo de polinomios simétricos $\Z[\sigma_1, \dots, \sigma_n]$.
+
+Por otra parte, usando la fórmula de Whitney, tenemos
+$$h^\star(c^n) = (1 - \xi_1) \smile \dots \smile (1 - \xi_n) = 1 - \sigma_1 + \sigma_2 - \sigma_3 + \dots + (-1)^n \, \sigma_n.$$
+Tomando la parte homogénea de grado $2i$, tenemos
+$$h^\star(c_i^n) = (-1)^i \, \sigma_i.$$
+Entonces, por el teorema fundamental de los polinomios simétricos \cite[pp. 347-348]{cox},
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item La imagen de $h^\star$ es todo el anillo de polinomios simétricos $\Z[\sigma_1, \dots, \sigma_n]$.
+    \item $h^\star(c_0^n) = 1$ es la identidad multiplicativa de $\Z[\sigma_1, \dots, \sigma_n]$.
+    \item $h^\star(c_1^n)$, $\dots$, $h^\star(c_n^n)$ generan libremente a $\Z[\sigma_1, \dots, \sigma_n]$.
+    \item $h^\star(c_i^n) = 0$, para todo $i > n$.
+\end{enumerate}
+Como $h^\star$ es inyectivo, tenemos el resultado buscado.
+\end{proof}

@@ -1,0 +1,25 @@
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+\markboth{INTRODUCCIÓN}{INTRODUCCIÓN}
+
+En geometría diferencial, una \textit{foliación holomorfa regular} de una variedad compleja $M$ es una partición de $M$ en subvariedades inmersas $L_\alpha \subset M$ cuya unión de fibrados tangentes
+$$E = \bigcup \nolimits_\alpha TL_\alpha$$
+es un subfibrado vectorial holomorfo de $TM$. El prototipo local de una foliación holomorfa es la partición del dominio de una sumersión holomorfa $f : M \to N$ en las componentes conexas de los conjuntos de nivel $f^{-1}(p)$ para cada $p \in N$. Sin embargo, en general, la estructura global de una foliación holomorfa es mucho más complicada que este prototipo local.
+
+Dada una variedad compleja $M$, existen obstrucciones tanto topológicas como analíticas a la existencia de foliaciones holomorfas regulares de $M$, que se pueden detectar usando herramientas algebraicas tales como la cohomología de haces. Para este fin, uno primero define una clase más general de \textit{foliaciones holomorfas singulares}, que permiten la existencia de un conjunto singular ``pequeño'' fuera del cual la foliación es regular. Luego, uno asume dada una foliación singular de $M$ y mide el ``tamaño mínimo'' que su conjunto singular está obligado a tener.
+
+Este trabajo está dividido en siete capítulos. El capítulo 1, de naturaleza preparatoria, tiene por objetivo motivar la idea de estudiar una foliación holomorfa a través de su fibrado tangente. Para ello, definimos las foliaciones holomorfas regulares y demostramos el \textit{teorema de Frobenius}, que caracteriza los subfibrados vectoriales holomorfos de $TM$ que son fibrados tangentes de una foliación holomorfa regular de $M$.
+
+En el capítulo 2, definimos los verdaderos objetos geométricos de interés de este trabajo: las foliaciones holomorfas singulares \textit{por curvas}, que son generadas por una sección holomorfa de un fibrado tangente torcido $TM \otimes L$, cuyos ceros forman el conjunto singular de la foliación. Luego estudiamos los problemas de encoger el conjunto singular de una foliación por curvas y enumerar correctamente los puntos singulares de dicha foliación. Para esto último, definimos el \textit{número de Milnor} de un punto singular aislado, una invariante topológica asociada al comportamiento local de la foliación en dicho punto singular.
+
+A partir de este punto, cambiamos súbitamente de enfoque, dejando la geometría compleja y concentrándonos en la topología algebraica. En el capítulo 3, clasificamos los fibrados vectoriales complejos sobre espacios paracompactos. Para tal fin, construimos un \textit{fibrado vectorial universal} $E_n(\C^\infty) \to \Gr_n(\C^\infty)$ tal que todo fibrado vectorial complejo $E \to M$ de rango $n$ es isomorfo de manera esencialmente única a un fibrado pullback $f^\star \circ E_n(\C^\infty)$, con $f : M \to \Gr_n(\C^\infty)$.
+
+En el capítulo 4, construimos las \textit{clases de Chern} $c_i(E)$ de un fibrado complejo $E \to M$, que proporcionan información ``numérica'' relativamente fácil de calcular acerca de $E$. La propiedad más sorprendente de las clases de Chern es que dichas clases están completamente determinadas por tres axiomas muy fáciles de enunciar algebraicamente, a tal punto que resulta difícil de creer que estas clases tengan algún contenido geométrico útil.
+
+En el capítulo 5, damos una interpretación geométrica a las clases de Chern $c_i(E)$. Para ello, asumiremos que el espacio base $M$ del fibrado vectorial complejo $E \to M$ es un complejo celular y construiremos $k$ secciones linealmente independientes $M \to E$ sobre los esqueletos de $M$ hasta encontrar una \textit{primera obstrucción} expresable como una clase de cohomología, que resultará ser $c_{q+1}(E)$, donde $n = k+q$ es el rango de $E$.
+
+En el capítulo 6, utilizamos técnicas similares a las del capítulo 5 para demostrar que, si $M$ es un complejo celular, entonces el grupo de cohomología $H^2(M)$ es isomorfo al grupo de fibrados lineales $L \to M$, con la operación del producto tensorial.
+
+Finalmente, en el capítulo 7 retornamos a las foliaciones holomorfas y demostramos que, si $M$ es una variedad compleja compacta de dimensión $n$, entonces toda foliación por curvas de $M$ con puntos singulares aislados, generada por una sección holomorfa de $TM \otimes L$, tiene
+$$\int_M c_n(TM \otimes L)$$
+puntos singulares, contados con multiplicidad. (Aquí, el integrando denota una forma diferencial cerrada arbitraria que representa a la clase de cohomología $c_n(TM \otimes L)$.) A modo de aplicación, demostraremos el \textit{teorema de Darboux} sobre el número de puntos singulares de una foliación por curvas de grado $d \in \N$ del espacio proyectivo $\P^n$.

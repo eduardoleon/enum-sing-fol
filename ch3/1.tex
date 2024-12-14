@@ -1,0 +1,31 @@
+\section{Definiciones básicas}
+
+En el capítulo anterior, hemos definido una clase de foliaciones $\F$ sobre $M$ generadas por una sección de un fibrado vectorial holomorfo $E \to M$, cuyos ceros son el lugar donde las hojas de $\F$ tienen menor dimensión que la esperada. Desde nuestro punto de vista, esta degeneración de las hojas es un ``defecto'' de $\F$ y el objetivo es encontrar y cuantificar estos defectos.
+
+Como veremos en el capítulo 5, los posibles lugares de los ceros de una sección $M \to E$ están determinados por la clase de isomorfismo de $E$. Anticipando este resultado, en este capítulo y el siguiente construiremos las herramientas algebraicas necesarias para estudiar la estructura de un fibrado vectorial, haciendo particular énfasis en la estructura \textit{topológica}.
+
+Dado un espacio topológico $M$, consideremos el semianillo $\Vect(M)$ cuyos elementos son los fibrados vectoriales complejos $E \to M$, salvo isomorfismo, y cuyas operaciones son
+$$n = [M \times \C^n], \qquad [E] + [F] = [E \oplus F], \qquad [E] \cdot [F] = [E \otimes F].$$
+El grupo de unidades multiplicativas $\Pic(M) = \Vect(M)^\times$ también se conoce como el \textbf{grupo de Picard topológico} de $M$ y está conformado por los fibrados lineales.
+
+Toda función continua $f : N \to M$ induce el homomorfismo de semianillos
+$$f^\star : \Vect(M) \longrightarrow \Vect(N), \qquad f^\star([E]) = [f^\star E],$$
+donde $f^\star E \to N$ es el \textbf{fibrado pullback}, cuyo espacio total es
+$$
+f^\star(E)
+    \cong N \times_M E
+    \cong \bigsqcup_{q \in N} \{ q \} \times E_{f(q)}
+    \cong \Big \{ (q,x) \in N \times E : x \in E_{f(q)} \Big \}.
+$$
+Para toda composición de funciones continuas
+$$
+\begin{tikzcd}
+    M_0     \arrow[r, "f_1"] &
+    M_1     \arrow[r, "f_2"] &
+    M_2     \arrow[r] &
+    \dots   \arrow[r] &
+    M_{n-1} \arrow[r, "f_n"] &
+    M_n,
+\end{tikzcd}
+$$
+se cumple $(f_n \circ \dots \circ f_1)^\star = f_1^\star \circ \dots \circ f_n^\star$. En particular, $\id^\star = \id$. Por tanto, $\Vect$ es un \textbf{funtor contravariante} de la categoría de espacios topológicos a la categoría de semianillos.

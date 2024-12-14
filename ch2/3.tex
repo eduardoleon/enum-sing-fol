@@ -1,0 +1,59 @@
+\section{Cálculo del número de Milnor}
+
+La definición de multiplicidad dada en la sección anterior tiene una interpretación geométrica convincente, pero no es conveniente para hacer cálculos. En geometría algebraica, se utiliza otra definición de multiplicidad, cuya forma general es complicada \cite[p. 120, def. 7.1]{fulton}, pero, en el caso que nos interesa, admite una descripción simple \cite[p. 123, ej. 7.1.10]{fulton}.
+
+Consideremos una función holomorfa $f : U \to \C^n$ definida en un abierto $U \subset \C^n$, como en la sección anterior. La \textbf{multiplicidad} $m_p(f)$ en un cero $p \in U$ de $f$ es la longitud del $\O_{U,p}$-módulo $\O_{U,p} / \q$, donde $\q$ es el ideal de $\O_{U,p}$ generado por la imagen del ideal maximal de $\O_{\C^n, 0}$ bajo el homomorfismo de $\C$-álgebras $f^\star : \O_{\C^n, 0} \to \O_{U,p}$ inducido por $f$.
+
+\begin{theorem}
+Si $p \in U$ es un cero aislado de $f$, entonces $m_p(f) = \mu_p(f)$.
+\end{theorem}
+
+\begin{proof}
+Por el teorema de los ceros de Rückert \cite[pp. 78-80]{ebeling}, el ideal $\q$ es primario para el ideal maximal $\m$ de $\O_{U,p}$. En particular, $\q$ contiene a alguna potencia $\m^{k+1}$. Entonces,
+$$m_p(f) = \ell(\O_{U,p} / \q) \le \ell(\O_{U,p} / \m^{k+1}) = \binom {n+k} k$$
+es una cantidad finita y $\O_{U,p} / \q$ es un anillo artiniano. Por el teorema de planitud milagrosa de Hironaka \cite[p. 179, teo. 23.1]{matsumura}, $\O_{U,p}$ es un $\O_{\C^n, 0}$-módulo libre de rango $m_p(f)$.
+
+Sean $y_1, \dots, y_n$ las coordenadas de $\C^n$. Por construcción, las imágenes $f_i = f^\star(y_i)$ generan $\q$, así que $f_1, \dots, f_n$ es un sistema de parámetros de $\O_{U,p}$. Por \cite[p. 123, cor. 11.21]{atiyah}, $f_1, \dots, f_n$ son $\C$-algebraicamente independientes. Entonces $f^\star$ es inyectivo y podemos identificar $\O_{\C^n, 0}$ con su imagen en $\O_{U,p}$. En particular, $\O_{U,p}$ es una extensión íntegra de $\O_{\C^n, 0}$.
+
+Sean $x_1, \dots, x_n$ coordenadas de $U$ en las cuales $p = (a_1, \dots, a_n)$. Sea $A_j = \O_{\C^n, 0}[x_1, \dots, x_j]$ y sea $K_j$ el cuerpo de fracciones de $A_j$. Por construcción, cada coordenada $x_j$ es algebraica sobre $K_{j-1}$ y su polinomio minimal $g_j \in K_{j-1}[T]$ es de grado $d_j = [K_j : K_{j-1}]$.
+
+Geométricamente, el anillo $A_n$ describe una vecindad $X_n$ de $(p,0)$ en la gráfica de $y = f(x)$ y los demás anillos $A_j$ describen la imagen $X_j$ de esta vecindad bajo la proyección que descarta las coordenadas $x_{j+1}, \dots, x_n$. En particular, la inclusión canónica $A_{j-1} \hookrightarrow A_j$ describe el morfismo $\pi_j : X_j \twoheadrightarrow X_{j-1}$ que descarta la siguiente coordenada $x_j$.
+
+Abreviemos $p_j = (a_1, \dots, a_j)$. Para casi todo punto $q \in X_{j-1}$ cercano a $(p_{j-1}, 0)$, el polinomio $g_j(q) \in \C[T]$ está bien definido y tiene $d_j$ raíces distintas. Por el lema de Hensel \cite[p. 73]{ebeling}, se deduce \cite[p. 101, prop. 2.43]{ebeling} que estas raíces son cercanas a $a_j$. Entonces la fibra general de $\pi_j$ consta de $d_j$ puntos cercanos a $\pi_j^{-1}(p_{j-1}, 0) = (p_j, 0)$. Por ende, la fibra general de
+$$\pi = \pi_1 \circ \dots \circ \pi_n : X_n \subset f(U) \longrightarrow X_0 \subset \C^n$$
+consta de $d_1 \cdots d_n = m_p(f)$ puntos cercanos a $(p,0)$. Pero $\pi$ es morfismo de gérmenes analíticos determinado por la proyección a $\C^n$ desde la gráfica de $f$, así que, para casi todo $q \in \C^n$ cercano al origen, la fibra $f^{-1}(q)$ contiene $m_p(f)$ puntos cercanos a $p$. Por ende, $m_p(f) = \mu_p(f)$.
+\end{proof}
+
+A modo de ejemplo, usaremos el número de Milnor para contar los puntos singulares de una foliación por curvas $\F$ del plano proyectivo $\P^2$. El \textbf{grado} de $\F$, denotado $\deg(\F)$, se define como el número de puntos\footnote{La definición de grado de una foliación de $\P^2$ es análoga a la de grado de una curva $C \subset \P^2$, i.e., el número de puntos en que una recta general de $\P^2$ interseca a $C$.} en que una recta general de $\P^2$ es tangente a las hojas de $\F$.
+
+\begin{theorem}[Teorema de Bézout para foliaciones]
+$\F$ tiene exactamente
+$$\sum_{p \in \P^n} \mu_p(\F) = 1 + \deg(\F) + \deg(\F)^2$$
+puntos singulares, contados con multiplicidad. En particular, no existen foliaciones regulares por curvas de $\P^2$.
+\end{theorem}
+
+\begin{proof}
+Por el teorema de Serre (GAGA), el fibrado lineal $L \to M$ y la sección de $TM \otimes L$ que definen a $\F$ son algebraicos. Entonces, $\F$ está definida en la parte afín $[x:y:z] = [u:v:1]$ por un campo vectorial polinomial
+$$X = P(u,v) \, \p u + Q(u,v) \, \p v$$
+o, equivalentemente, por la $1$-forma polinomial
+$$\omega = Q(u,v) \, du - P(u,v) \, dv$$
+o, equivalentemente, cualquier múltiplo escalar
+$$\sigma = z^{n+2} \omega = z^{n+1} Q \, dx - z^{n+1} P \, dy - z^n \, (xQ - yP) \, dz,$$
+visto como una sección de $T^\star \P^2 \otimes L'$ para algún fibrado lineal $L' \to \P^2$.
+
+Tras un cambio de coordenadas de $\P^2$, podemos asumir que la recta en el infinito $L_\infty : z = 0$ no contiene hojas de $\F$. En particular, como $L_\infty$ no es una hoja, existe algún $n \in \Z$ tal que $\sigma$ es holomorfa en $L_\infty$ y no se anula idénticamente en $TL_\infty$. Analizando los términos
+$$z^{n+1} Q \, dx - z^{n+1} P \, dy,$$
+deducimos que $z^{n+1}$ tiene el grado preciso para anular los polos de $P, Q$ en $L_\infty$. Por ende, $n+1$ debe ser el mayor de los grados de $P, Q$. Analizando el término restante
+$$- z^n \, (xQ - yP) \, dz$$
+deducimos que $xQ - yP$ tiene a lo más un polo de orden $n$ en $L_\infty$. Si denotamos por $P_j, Q_j$ las partes homogéneas de $P, Q$ de grado $j$, entonces $xQ_{n+1}(x,y) = yP_{n+1}(x,y)$, así que
+$$R = \dfrac {P_{n+1}(x,y)} x = \dfrac {Q_{n+1}(x,y)} y$$
+es un polinomio homogéneo bien definido, no nulo y de grado $n$.
+
+Por otra parte, como $L_\infty$ no contiene puntos singulares de $\F$, la restricción
+$$\sigma \vert_{L_\infty} = xR \, dx - yR \, dy - \Big( xQ_n(x,y) - yP_n(x,y) \Big) \, dz$$
+no se anula en ningún punto de $L_\infty$. En los puntos $[x:y:0]$ donde $R$ se anula, $\sigma \vert_{L_\infty}$ se reduce a un múltiplo no nulo de $dz$. Éstos son precisamente los puntos donde $L_\infty$ es tangente a $\F$. Por lo tanto, $\F$ es de grado $\deg(\F) = \deg(R) = n$.
+
+Finalmente, los puntos singulares de $\F$ son los ceros comunes de $P, Q$ en el abierto afín con coordenadas $u, v$. Las clausuras proyectivas de las curvas $P, Q$ también se intersecan en los ceros de $R$, pero estos puntos no son singularidades de $\F$. Entonces, $\F$ tiene
+$$\sum_{p \in \P^n} \mu_p(\F) = \deg(P) \cdot \deg(Q) - \deg(R) = 1 + \deg(\F) + \deg(\F)^2$$
+puntos singulares, contados con multiplicidad.
+\end{proof}

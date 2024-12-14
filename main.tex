@@ -1,0 +1,115 @@
+\documentclass[oneside,11pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[title]{appendix}
+\usepackage[spanish]{babel}
+\usepackage[style=alphabetic]{biblatex}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{babel}
+\usetikzlibrary{cd}
+
+\title{Enumeración de Singularidades de Foliaciones Holomorfas por Curvas}
+\author{Eduardo León (\begin{CJK*}{UTF8}{bkai}梁遠光\end{CJK*})}
+\date{Diciembre 2022}
+
+\addbibresource{ref.bib}
+
+\newtheorem{counter}{Contador}[chapter]
+
+\theoremstyle{definition}
+\newtheorem*{reminder}{Recordatorio}
+\newtheorem{example}[counter]{Ejemplo}
+\newtheorem{axiom}[counter]{Axioma}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[counter]{Proposición}
+\newtheorem{lemma}[counter]{Lema}
+\newtheorem{theorem}[counter]{Teorema}
+\newtheorem{corollary}[counter]{Corolario}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
+\newtheorem*{remarks}{Observaciones}
+
+\renewcommand \baselinestretch {1.2}
+
+\addto \captionsspanish {\renewcommand \proofname {Prueba}}
+
+\newcommand   \N {\mathbb N}
+\newcommand   \Z {\mathbb Z}
+\newcommand   \R {\mathbb R}
+\newcommand   \C {\mathbb C}
+\renewcommand \P {\mathbb P}
+
+\newcommand   \F {\mathcal F}
+\renewcommand \L {\mathcal L}
+\renewcommand \O {\mathcal O}
+\newcommand   \Q {\mathcal Q}
+\renewcommand \S {\mathcal S}
+\newcommand   \T {\mathcal T}
+\newcommand   \U {\mathcal U}
+
+\newcommand   \m {\mathfrak m}
+\renewcommand \o {\mathfrak o}
+\newcommand   \q {\mathfrak q}
+\newcommand   \X {\mathfrak X}
+
+\newcommand \p [1] {\dfrac \partial {\partial #1}}
+
+\renewcommand \t {\qquad \phantom=}
+
+\DeclareMathOperator \id {id}
+\DeclareMathOperator \pt {pt}
+
+\DeclareMathOperator \GL   {GL}
+\DeclareMathOperator \Gr   {Gr}
+\DeclareMathOperator \Pic  {Pic}
+\DeclareMathOperator \Vect {Vect}
+
+\DeclareMathOperator \Sing {Sing}
+\DeclareMathOperator \Supp {Supp}
+\DeclareMathOperator \Tang {Tang}
+
+\begin{document}
+
+\thispagestyle{empty}
+\subfile{front.tex}
+\newpage
+
+\pagenumbering{roman}
+\subfile{abs.tex}
+\tableofcontents
+\listoffigures
+
+\newpage
+
+\pagenumbering{arabic}
+\mainmatter
+
+\subfile{intro.tex}
+
+\subfile{ch1/0.tex}
+\subfile{ch2/0.tex}
+\subfile{ch3/0.tex}
+\subfile{ch4/0.tex}
+\subfile{ch5/0.tex}
+\subfile{ch6/0.tex}
+\subfile{ch7/0.tex}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,78 @@
+\section{Teorema de Darboux}
+
+Cuando la variedad foliada $M$ es el espacio proyectivo $\P^n$, existe un criterio geométrico para identificar el fibrado lineal $L \to \P^n$ usado para construir la foliación $\F$ como sección del fibrado tangente torcido $T\P^n \otimes L$. Daremos este criterio a continuación.
+
+Sea $H \subset \P^n$ un hiperplano en posición general. Es decir, $H$ es no $\F$-invariante y no contiene ningún punto singular de $\F$. El \textbf{conjunto de tangencias}
+$$\Tang(H, \F) = \big \{ p \in H : T_p \F \subset T_pH \big \},$$
+es algebraico y tiene una estructura de subesquema de $H$, posiblemente no reducido, cuyo grado no depende de la elección de $H$. El \textbf{grado} de la foliación $\F$ se define como
+$$\deg(\F) = \deg \circ \Tang(H, \F).$$
+Si $\Tang(H, \F)$ es genéricamente vacío, entonces definimos $\deg(\F) = 0$.
+
+Antes de ver cómo $\deg(\F)$ determina el fibrado lineal $L$, recapitulemos algunos hechos sobre los fibrados lineales holomorfos sobre $\P^n$. Por el teorema de Serre (GAGA), $L$ es un fibrado lineal algebraico. Por \cite[p. 145, cor. 6.17]{hartshorne}, existe un único entero $d \in \Z$ tal que
+$$L \cong \O(d) \cong \O(1)^{\otimes d},$$
+donde $\O(1) \to \P^\infty$ es el dual del fibrado tautológico. Nuestro objetivo es hallar $d$.
+
+\begin{lemma}
+El fibrado lineal $L \to \P^n$ es isomorfo a $\O(d-1)$, con $d = \deg(\F)$.
+\end{lemma}
+
+\begin{proof}
+Sea $\sigma : \P^n \to T\P^n \otimes \O(d-1)$ la sección holomorfa que genera a $\F$, donde $d \in \Z$ es un entero a priori arbitrario. A partir de la sucesión de Euler torcida
+$$
+\begin{tikzcd}
+    0 \arrow[r]
+        & \O_{\P^n}(d-1) \arrow[r]
+        & \O_{\P^n}(d)^{n+1} \arrow[r]
+        & T\P^n \otimes \O_{\P^n}(d-1) \arrow[r]
+        & 0,
+\end{tikzcd}
+$$
+deducimos lo siguiente:
+\begin{itemize}
+    \itemsep 0em
+    \item $\sigma$ tiene una representación coordenada de la forma
+    $$\sigma = f_0 \, \p {z_0} + \dots + f_n \, \p {z_n},$$
+    donde $f_0, \dots, f_n \in \O_{\P^n}(d)$ son formas de grado $d$. Por ende, $d \ge 0$.
+    
+    \item $\sigma$ se anula en los puntos donde su representación es paralela al campo radial
+    $$\rho = z_0 \, \p {z_0} + \dots + z_n \, \p {z_n},$$
+    así que la representación coordenada de $\sigma$ se puede escoger de tal manera que la variable $z_0$ no aparezca en $f_0$.
+\end{itemize}
+Con ello, las siguientes afirmaciones son equivalentes:
+\begin{itemize}
+    \itemsep 0em
+    \item $H : z_0 = 0$ es un hiperplano no $\F$-invariante.
+    \item $f_0$ es un polinomio homogéneo no nulo en las variables $z_1, \dots, z_n$.
+\end{itemize}
+Entonces, el esquema de tangencias de $H$ con $\F$ es
+$$\Tang(H, \F) = \big \{ [0 : a_1 : \dots : a_n] : f_0(a_1, \dots, a_n) = 0 \big \}.$$
+Por lo tanto, el grado de la foliación $\F$ es
+$$\deg(\F) = \deg \circ \Tang(H, \F) = \deg(f_0) = d,$$
+que es el resultado buscado.
+\end{proof}
+
+\begin{remark}
+Si considerásemos al lugar de las tangencias $\Tang(H, \F)$ como conjunto algebraico, ignorando la estructura de esquema, entonces $\deg \circ \Tang(H, \F)$ dependería de la elección de $H$ y, por lo tanto, no sería una invariante intrínseca de la foliación $\F$.
+\end{remark}
+
+\begin{theorem}[Darboux]
+La foliación $\F$ tiene exactamente
+$$\sum_{p \in \P^n} \mu_p(\F) = 1 + \deg(\F) + \deg(\F)^2 + \dots + \deg(\F)^n$$
+puntos singulares, contados con multiplicidad. En particular, no existen foliaciones regulares por curvas de $\P^n$.
+\end{theorem}
+
+\begin{proof}
+Sea $d = \deg(\F)$. Asumiremos que $d \ne 1$, pues una foliación de grado $1$ es generada por un campo holomorfo global sobre $\P^n$, cuyo número de puntos singulares ya fue calculado cuando demostramos el teorema 5.13.
+
+Las clases de Chern de $T\P^n$ y $\O(d-1)$ son
+$$c_i(T\P^n) = \binom {n+1} i \, \xi^i, \qquad c_1 \circ \O(d-1) = (d-1) \, \xi,$$
+Entonces, la sección de $E = T\P^n \otimes \O(d-1)$ que genera a $\F$ tiene
+\begin{align*}
+    \int_{\P^n} c_n(E)
+        &= \sum_{i=0}^n \binom {n+1} i (d-1)^{n-i} \\
+        &= \dfrac 1 {1-d} \left[ 1 - \sum_{i=0}^{n+1} \binom {n+1} i (d-1)^{n-i+1} \right] \\
+        &= \dfrac {1 - d^{n+1}} {1 - d} \\
+        &= 1 + d + d^2 + \dots + d^n
+\end{align*}
+puntos singulares, contados con multiplicidad.
+\end{proof}

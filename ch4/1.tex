@@ -1,0 +1,43 @@
+\section{Definiciones básicas}
+
+Por el teorema de clasificación del capítulo anterior, la estructura de un fibrado vectorial de rango $n$ sobre un espacio topológico paracompacto $M$ está plasmada \textit{sin pérdida de información} en una función clasificadora $f : M \to \Gr_n(\C^\infty)$. Sin embargo, en general, esta función es difícil de construir y aún más difícil de usar, al menos para resolver el tipo de problemas geométricos que motiva nuestro estudio de los fibrados vectoriales.
+
+Dado que no necesitamos toda la información contenida en una función clasificadora, estamos interesados en hallar un objeto más simple que rescate la información más esencial de un fibrado vectorial $E \to M$. En este capítulo, construiremos una sucesión de clases de cohomología
+$$c_i(E) \in H^{2i}(M),$$
+llamadas las \textbf{clases de Chern} de $E \to M$, que describen el homomorfismo de anillos
+$$f^\star : H^\star \circ \Gr_n(\C^\infty) \longrightarrow H^\star(M)$$
+inducido por una función clasificadora $f : M \to \Gr_n(\C^\infty)$ de $E$. La suma formal
+$$c(E) = c_0(E) + c_1(E) + c_2(E) + \dots$$
+también se denomina la \textbf{clase total de Chern} de $E$.
+
+Las clases de Chern están completamente determinadas por tres axiomas:
+
+\begin{axiom}[Naturalidad]
+$c(F) = f^\star \circ c(E)$, para todo fibrado pullback $F \cong f^\star(E)$.
+\end{axiom}
+
+\begin{axiom}[Fórmula de Whitney]
+$c(E) = c(F) \smile c(E/F)$, para todo subfibrado $F \subset E$.
+\end{axiom}
+
+\begin{axiom}[Normalización]
+$c \circ E_1(\C^\infty) = 1 - \xi$, donde $\xi$ es el generador\footnote{El isomorfismo canónico $H^\star(\P^\infty) \cong \Z[\xi]$ se calcula construyendo el espacio proyectivo $\P^\infty = \Gr_1(\C^\infty)$ como el límite directo del sistema de inclusiones $\P^0 \to \P^1 \to \P^2 \to \dots$, con la topología celular.} de $H^\star(\P^\infty)$.
+\end{axiom}
+
+Las clases de Chern de un fibrado vectorial $E \to M$ se pueden construir de varias formas. En este capítulo, usaremos el método que requiere menos esfuerzo, que consiste en usar los axiomas para constreñir los valores posibles de $c_i(E)$ hasta que sólo quede una opción.
+
+\begin{proposition}
+Las clases de Chern $c_i(E)$ de un fibrado vectorial complejo arbitrario $E \to M$ de rango $n$ están determinadas por las \textbf{clases de Chern universales}
+$$c_i^n = c_i \circ E_n(\C^\infty) \in H^\star \circ \Gr_n(\C^\infty)$$
+asociadas al fibrado tautológico $E_n(\C^\infty) \to \Gr_n(\C^\infty)$.
+\end{proposition}
+
+\begin{proof}
+Por el axioma de naturalidad, la $i$-ésima clase de Chern de $E$ es
+$$c_i(E) = c_i \circ f^\star \circ E_n(\C^\infty) = f^\star(c_i^n),$$
+donde $f : M \to \Gr_n(\C^\infty)$ es cualquier función clasificadora de $E$.
+\end{proof}
+
+Por consistencia con la notación para la clase total $c(E)$, escribiremos
+$$c^n = c_0^n + c_1^n + c_2^n + \dots = c \circ E_n(\C^\infty).$$
+Notemos que el axioma de normalización especifica directamente el valor de $c^1$. Para calcular las clases $c^n$ en general, usaremos el concepto de \textbf{rompimiento} definido en la siguiente sección.

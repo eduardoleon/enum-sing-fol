@@ -1,0 +1,129 @@
+\section{La primera obstrucción}
+
+La \textbf{primera obstrucción} a la existencia de secciones globales de $V_k(E)$ o, por brevedad, la primera obstrucción de $V_k(E)$, se define como la clase de cohomología celular
+$$c \circ V_k(E) = [c(\sigma)] \in H^{2q+2}(M)$$
+del cociclo de obstrucción $c(\sigma)$ de cualquier sección $\sigma : M^{2q+1} \to V^{2q+1}$. Por los resultados de la sección anterior, la primera obstrucción $c \circ V_k(E)$ tiene las siguientes propiedades.
+
+\begin{proposition}[Naturalidad]
+Dada una función continua $f : N \to M$ cuyo dominio es otro complejo celular $N$, la primera obstrucción del fibrado pullback $f^\star \circ V_k(E)$ es
+$$c \circ f^\star \circ V_k(E) = f^\star \circ c \circ V_k(E) \in H^{2q+2}(N).$$
+\end{proposition}
+
+\begin{proof}
+Reemplacemos a $f$ con una aproximación celular \cite[p. 349]{hatcher1}. Por la proposición 5.4, dada una sección arbitraria $\sigma : M^{2q+1} \to V^{2q+1}$, tenemos
+$$
+c \circ f^\star \circ V_k(E)
+    = [c \circ f^\star(\sigma)]
+    = [f^\star \circ c(\sigma)]
+    = f^\star([c(\sigma)])
+    = f^\star \circ c \circ V_k(E).
+$$
+Por lo tanto, la primera obstrucción es natural con respecto a los pullbacks.
+\end{proof}
+
+\begin{proposition}[Estabilidad]
+La primera obstrucción de $V_{k+j}(E \oplus \C^j)$ es
+$$c \circ V_{k+j}(E \oplus \C^j) = c \circ V_k(E).$$
+\end{proposition}
+
+\begin{proof}
+Sea $\sigma : M^{2q+1} \to V^{2q+1}$ una sección arbitraria. Por la proposición 5.5,
+$$
+c \circ V_{k+j}(E \oplus \C^j)
+    = [c \circ i_\star(\sigma)]
+    = [i_\star \circ c(\sigma)]
+    = i_\star([c(\sigma)])
+    = i_\star \circ c \circ V_k(E)
+    = c \circ V_k(E),
+$$
+donde, en el último paso, hemos usado el hecho de que el isomorfismo canónico
+$$i_\star : \pi_{2q+1} \circ V_k(\C^n) \longrightarrow \pi_{2q+1} \circ V_{k+j}(\C^{n+j})$$
+se representa por el automorfismo identidad de $\Z$. Por lo tanto, la primera obstrucción es estable con respecto a la adición de sumandos directos triviales.
+\end{proof}
+
+\begin{theorem}
+La condición $c \circ V_k(E) = 0$ es necesaria y suficiente para que exista una sección de $V_k(E)$ sobre el $(2q+2)$-esqueleto de $M$.
+\end{theorem}
+
+\begin{proof}
+Dada una sección parcial $\tau : M^{2q+2} \to V^{2q+2}$, la restricción $\sigma = \tau \big \vert_{M^{2q+1}}$ es extendible a una sección de $V^{2q+2}$, a saber, $\tau$. Entonces, $c \circ V_k(E) = [c(\sigma)] = [0] = 0$.
+
+Recíprocamente, si $c \circ V_k(E) = 0$, entonces el cociclo de obstrucción $c(\sigma)$ de cualquier sección parcial $\sigma : M^{2q+1} \to V^{2q+1}$ es una cofrontera. Por el teorema 5.7, mediante una homotopía hueca $\rho : M^\square \to V^\square$ que comienza en $\sigma$, podemos obtener otra sección $\widetilde \sigma : M^{2q+1} \to V^{2q+1}$ cuyo cociclo de obstrucción es $c(\widetilde \sigma) = 0$. Entonces, $\widetilde \sigma$ se extiende a una sección de $V^{2q+2}$.
+\end{proof}
+
+Las propiedades de la primera obstrucción $c \circ V_k(E)$ antes demostradas son sospechosamente parecidas a uno de los axiomas de las clases de Chern (naturalidad) y a una de sus consecuencias inmediatas (estabilidad). A continuación, demostraremos que esto no es coincidencia: la primera obstrucción $c \circ V_k(E)$ es precisamente la $(q+1)$-ésima clase de Chern $c_{q+1}(E)$.
+
+\begin{proposition}
+La \textbf{primera obstrucción universal}\footnote{El grassmanniano $\Gr_n(\C^\infty)$ tiene una descomposición celular canónica en \textit{células de Schubert}.}
+$$c_{k,q} = c \circ V_k \circ E_n(\C^\infty) \in H^{2q+2} \circ \Gr_n(\C^\infty)$$
+determina el valor de $c \circ V_k(E)$ para cualquier fibrado vectorial $E \to M$ de rango $n$ cuyo espacio base $M$ es un complejo celular.
+\end{proposition}
+
+\begin{proof}
+Análoga a la proposición 4.4.
+\end{proof}
+
+\begin{proposition}
+La primera obstrucción universal es de la forma
+$$c_{k,q} = \lambda_{q+1} \, c_{q+1}^n,$$
+donde $\lambda_{q+1} \in \Z$ es una constante que sólo depende de $q$.
+\end{proposition}
+
+\begin{proof}
+Sea $f : \Gr_q(\C^\infty) \to \Gr_n(\C^\infty)$ una función clasificadora de $E = E_q(\C^\infty) \oplus \C^k$. Dado que $V_k(E)$ posee una sección global inducida por la base estándar de $\C^k$, tenemos
+$$c_{k,q} \in \ker(f^\star) = \langle c_{q+1}^n \rangle.$$
+Como $c_{k,q}$ y $c_{q+1}^n$ son del mismo grado, existe una constante entera $\lambda \in \Z$ tal que
+$$c_{k,q} = \lambda c_{q+1}^n.$$
+Notemos que, en principio, la constante $\lambda$ depende tanto de $k$ como de $q$. Sin embargo, dado que la primera obstrucción es estable, tenemos
+$$c_{1,q} = c_{2,q} = \dots = c_{k,q} = \lambda c_{q+1}^n.$$
+Por lo tanto, $\lambda = \lambda_{q+1}$ sólo depende de $q$.
+\end{proof}
+
+\begin{theorem}
+La primera obstrucción universal es
+$$c_{k,q} = c_{q+1}^n \in H^{2q+2} \circ \Gr_n(\C^\infty).$$
+Por ende, la $(q+1)$-ésima clase de Chern $c_{q+1}(E)$ es la primera obstrucción a la existencia de $k$ secciones de $E \to M$ linealmente independientes sobre cada punto $p \in M$.
+\end{theorem}
+
+\begin{proof}
+A partir de la sucesión exacta de Euler \cite[pp. 93-94]{huybrechts}
+$$
+\begin{tikzcd}[row sep = large, column sep = large]
+    0 \arrow[r] & \O_{\P^n} \arrow[r] & \O_{\P^n}(1)^{n+1} \arrow[r] & T\P^n \arrow[r] & 0,
+\end{tikzcd}
+$$
+deducimos lo siguiente:
+\begin{itemize}
+    \itemsep 0em
+    \item Todo campo vectorial holomorfo global sobre $\P^n$ es de la forma
+    $$X = f_0 \, \p {x_0} + \dots + f_n \, \p {x_n},$$
+    donde $f_0, \dots, f_n \in \O_{\P^n}(1)$ son formas lineales.
+    
+    \item El operador lineal $f = (f_0, \dots, f_n)$ que representa a $X$ está bien definido salvo un múltiplo constante del operador identidad.
+\end{itemize}
+Notemos que $f$ tiene las siguientes propiedades:
+\begin{itemize}
+    \itemsep 0em
+    \item $[v] \in \P^n$ es una singularidad de $X$ $\iff$ $v$ es un autovector de $f$.
+    \item $[v] \in \P^n$ es una singularidad aislada de $X$ $\iff$ $\langle v \rangle$ es un autoespacio de $f$.
+    \item $[v] \in \P^n$ es una singularidad simple de $X$ $\iff$ $\langle v \rangle$ es un autoespacio generalizado de $f$.
+\end{itemize}
+En particular, si $X$ un campo holomorfo general sobre $\P^n$, entonces
+\begin{itemize}
+    \itemsep 0em
+    \item $X$ tiene $n+1$ singularidades simples $p_0, \dots, p_n$.
+    \item Dada una descomposición celular de $\P^n$ con una $2n$-célula distinguida $e_i$ centrada en cada punto singular $p_i$, el cociclo de obstrucción de $X$ es
+    $$
+    c(X)(e_\alpha) =
+        \begin{cases}
+            1, & \text{para $e_\alpha = e_0, \dots, e_n$,} \\
+            0, & \text{para cualquier otra $2n$-célula.}
+        \end{cases}
+    $$
+    
+    \item La primera obstrucción a la existencia de un campo global sin ceros sobre $\P^n$ es
+    $$c \circ V_1(T\P^n) = [c(X)] = (n+1) \, \xi^n = c_n(T\P^n),$$
+    donde $\xi \in H^2(\P^n)$ es la clase del hiperplano.
+\end{itemize}
+Esto sólo es posible si $\lambda_n = 1$, lo cual implica el resultado buscado.
+\end{proof}

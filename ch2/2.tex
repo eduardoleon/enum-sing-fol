@@ -1,0 +1,69 @@
+\section{El número de Milnor}
+
+Dada una foliación singular por curvas $\F$ de una variedad $M$, el \textbf{número de Milnor} $\mu_p(\F)$ de $\F$ en un punto $p \in M$ es una invariante que, en cierto sentido, cuenta el número de veces que $p$ está repetido como punto singular de $\F$. Más precisamente, si $\sigma$ es la sección de $TM \otimes L$ que genera las hojas de $\F$, entonces $\mu_p(\F)$ es la multiplicidad de $\sigma$ en $p$.
+
+La noción de multiplicidad es local, así que trabajaremos con una representación $f : U \to \C^n$ de $\sigma$ en una vecindad coordenada $U \subset M$ centrada en $p$. Si $p$ es un cero aislado de $f$, entonces \cite[p. 59]{milnor2} define la \textbf{multiplicidad} $\mu_p(f)$ de $f$ en $p$ como el grado topológico de
+$$g : \partial D_\varepsilon \longrightarrow S^{2n-1}, \qquad g(z) = \dfrac {f(z)} {\Vert f(z) \Vert},$$
+donde $D_\varepsilon \subset U$ es un un disco pequeño centrado de $p$.
+
+Para justificar el término ``multiplicidad'', \cite[pp. 111-114]{milnor2} demuestra que $\mu_p(f)$ satisface propiedades análogas a las de la multiplicidad de un cero de un polinomio.
+
+\begin{lemma}
+Todo cero simple de $f$ es de multiplicidad $1$.
+\end{lemma}
+
+\begin{proof}
+Si la matriz $J = f'(p)$ es invertible, entonces, por el teorema de Taylor,
+$$\Vert f(z) - J(z - p) \Vert < \Vert J(z - p) \Vert$$
+en un disco pequeño $D_\varepsilon \subset U$ centrado en $p$. Entonces, la homotopía
+$$h_t(z) = (1 - t) \cdot f(z) + t \cdot J(z - p)$$
+interpola entre $f(z)$ y $J(z - p)$ mediante funciones que no se anulan en $D_\varepsilon \setminus \{ p \}$. Como $\GL_n(\C)$ es conexo, existe un camino de isomorfismos lineales $J_t$ desde $J_0 = J$ hasta $J_1 = \id$. Por lo tanto, $\mu_p(f)$ es el es el grado topológico de
+$$g : \partial D_\varepsilon \longrightarrow S^{2n-1}, \qquad g(z) = \dfrac {z - p} {\Vert z - p \Vert},$$
+que, por supuesto, es $1$.
+\end{proof}
+
+\begin{lemma}
+Si $D_\varepsilon \subset U$ es un disco tal que $f$ no se anula en $\partial D_\varepsilon$, entonces el grado de
+$$g : \partial D_\varepsilon \longrightarrow S^{2n-1}, \qquad g(z) = \dfrac {f(z)} {\Vert f(z) \Vert}$$
+es el número de ceros de $f$ en $D_\varepsilon$, contados con multiplicidad.
+\end{lemma}
+
+\begin{proof}
+Por hipótesis, el conjunto $K$ de ceros de $f$ en $D_\varepsilon$ no se acumula en $\partial D_\varepsilon$. Entonces $K$ es compacto y, por el principio del módulo máximo \cite[pp. 105-106]{gunning}, $K$ es finito.
+
+Sean $p_1, \dots, p_r$ todos los puntos de $K$. Si tomamos una esfera pequeña $S_i \subset D_\varepsilon$ centrada en cada $p_i$, entonces $\partial D_\varepsilon$ es homólogo en $\overline D_\varepsilon \setminus K$ a la suma $S_1 + \dots + S_r$. Por ende,
+$$\deg(g) = \mu_{p_1}(f) + \dots + \mu_{p_r}(f)$$
+es el número de ceros de $f$ en $D_\varepsilon$, contados con multiplicidad.
+\end{proof}
+
+\begin{lemma}
+Si $D_\varepsilon \subset U$ es una vecindad pequeña de un único cero $p$ de $f$, entonces, para casi todo $q \in \C^n$ suficientemente cercano al origen, la fibra $f^{-1}(q)$ contiene $\mu_p(f)$ puntos de $D_\varepsilon$. En particular, $\mu_p(f) \ge 0$.
+\end{lemma}
+
+\begin{proof}
+Por el teorema de Sard, casi todo $q \in \C^n$ es un valor regular de $f$. Si $q \in \C^n$ es un valor regular de $f$ suficientemente cercano al origen, entonces la homotopía
+$$h_t(z) = f(z) - t \cdot q$$
+interpola entre $f(z)$ y $g(z) = f(z) - q$ mediante funciones que no se anulan en $\partial D_\varepsilon$. Si $p_1, \dots, p_r$ son los ceros de $g$ contenidos en $D_\varepsilon$, entonces
+$$\mu_p(f) = \mu_{p_1}(g) + \dots + \mu_{p_r}(g) = 1 + \dots + 1 = r$$
+y, en particular, $\mu_p(f)$ es no negativo.
+\end{proof}
+
+\begin{theorem}
+Todo cero aislado de $f$ es de multiplicidad positiva.
+\end{theorem}
+
+\begin{proof}
+El grupo lineal $\GL_n(\C)$ es denso en el espacio de matrices $\C^{n \times n}$. Para casi toda matriz $A \in \C^{n \times n}$ suficientemente cercana a la matriz cero, la función
+$$g(z) = f(z) - A(z - p)$$
+tiene un cero simple en el origen y la homotopía
+$$h_t(z) = f(z) - t \cdot A(z - p)$$
+interpola entre $f(z)$ y $g(z)$ mediante funciones que no se anulan en la frontera $\partial D_\varepsilon$ de un disco pequeño $D_\varepsilon \subset U$ centrado en $p$. Si $p_1, \dots, p_r$ son los demás ceros de $g$ en $D_\varepsilon$, entonces
+$$\mu_p(f) = \mu_p(g) + \mu_{p_1}(g) + \dots + \mu_{p_r}(g) \ge 1 + 0 + \dots + 0 = 1$$
+es un número positivo.
+\end{proof}
+
+Consideremos ahora el efecto de aplicar una función de transición holomorfa $\tau : U \to \GL_n(\C)$ al representante local $f$ de $\sigma$. Asumiendo sin pérdida de generalidad que $U$ es contractible, $\tau$ es homotópica a la función constante
+$$\iota : U \longrightarrow \GL_n(\C), \qquad \iota(z) = \id : \C^n \to \C^n$$
+y, por ende, $\tau \cdot f$ es homotópica a $f$ mediante funciones que sólo se anulan en los ceros de $f$. En particular, si $p$ es un cero aislado de $f$, entonces $\tau \cdot f$ es homotópica a $f$ mediante funciones que no se anulan en $D_\varepsilon \setminus \{ p \}$, donde $D_\varepsilon \subset U$ es un disco pequeño centrado en $p$. Por ende,
+$$\mu_p(\F) = \mu_p(\sigma) = \mu_p(f)$$
+está bien definido y es independiente de $\sigma$ o de $f$.

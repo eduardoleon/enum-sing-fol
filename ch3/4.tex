@@ -1,0 +1,21 @@
+\section{Estructuras geométricas adicionales}
+
+Para $n \in \N$, el grassmanniano $\Gr_k(\C^n)$ es una variedad algebraica compleja compacta y los fibrados de Stiefel $V_k(\C^n)$ y tautológico $E_k(\C^n)$ sobre $\Gr_k(\C^n)$ también son algebraicos. Dado un morfismo de variedades diferenciables, analíticas o algebraicas $\widetilde f : M \to \Gr_k(\C^n)$, los pullbacks de $V_k(\C^n)$ y $E_k(\C^n)$ bajo $\widetilde f$ también pertenecen a la categoría de espacios correspondiente.
+
+Ahora supongamos que $E \to M$ es un fibrado vectorial diferenciable, holomorfo o algebraico dado y consideremos el problema de recuperar la estructura correspondiente del espacio total $E$ usando una función clasificadora $\widetilde f : M \to \Gr_k(\C^n)$. Por lo pronto, la dimensión topológica de $M$ es finita, así que existe un anclaje continuo $f : E \to \C^n$ con $n \in \N$. En realidad, la pregunta es si podemos conseguir que este anclaje sea diferenciable, analítico o algebraico, de tal manera que $E$ sea isomorfo a $\widetilde f^\star \circ E_k(\C^n)$ en la categoría correspondiente.
+
+En el caso diferenciable, la respuesta es afirmativa. La clave radica en que cualquier función continua $\widetilde f : M \to \Gr_k(\C^n)$ admite una aproximación diferenciable esencialmente única o, siendo más precisos, única salvo homotopía diferenciable. Por ende, $E$ admite esencialmente una única estructura diferenciable compatible con la estructura de fibrado vectorial topológico.
+
+En el caso holomorfo o algebraico, las cosas no son tan simples. Un fibrado vectorial complejo sobre una variedad compleja puede admitir muchas estructuras holomorfas no equivalentes, pero también puede no admitir ninguna estructura holomorfa \cite[pp. 66-67]{huybrechts}.
+
+\begin{example}
+Sean $P, Q$ dos puntos de una curva elíptica $M$. El fibrado lineal $\O_M(P-Q)$ es topológicamente trivial. Sin embargo, como fibrado vectorial holomorfo, no es trivial, porque no posee secciones globales holomorfas no nulas.
+\end{example}
+
+Más aún, existen fibrados vectoriales holomorfos que no admiten anclajes holomorfos.
+
+\begin{example}
+El fibrado canónico $\O(1) \to \P^n$ es generado por $n+1$ secciones holomorfas que corresponden a las coordenadas homogéneas de $\P^n$. Si existiese un anclaje holomorfo $\O(1) \to \C^m$ para algún $m \in \N$, entonces cada coordenada homogénea de $\P^n$ induciría una función holomorfa no constante $\P^n \to \C^m$, lo cual contradice el principio del máximo del análisis complejo.
+\end{example}
+
+Por lo tanto, la clasificación de fibrados vectoriales topológicos o diferenciables es apenas una aproximación muy cruda a la clasificación de fibrados vectoriales holomorfos sobre una variedad compleja. No obstante, para nuestros fines, esta aproximación será suficiente.

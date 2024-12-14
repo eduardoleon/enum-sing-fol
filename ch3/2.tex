@@ -1,0 +1,122 @@
+\section{Invarianza por homotopías}
+
+Intuitivamente, un fibrado vectorial complejo $E \to M$ es una función continua que asigna un espacio vectorial complejo $E_p$ a cada punto $p \in M$. Entonces un fibrado vectorial $E \to M \times I$ se puede ver como una \textbf{homotopía de fibrados} $E_t \to M$, donde $E_t$ se identifica con la restricción de $E$ a la sección horizontal $M \times \{ t \}$, identificada con $M$ de la manera obvia.
+
+En esta sección, demostraremos que, bajo una hipótesis ``razonable'' sobre la topología de $M$, que ciertamente es válida cuando $M$ es una variedad diferenciable (el caso que más nos interesa), toda homotopía de fibrados $E_t \to M$ induce un isomorfismo de fibrados $E_0 \cong E_1$. Pero, antes de ello, daremos un ejemplo de una homotopía de fibrados que \textit{no} induce un isomorfismo entre sus extremos\footnote{Adaptado de \url{https://mathoverflow.net/a/306809}.}.
+
+\begin{example}
+Sea $M$ la unión de una familia numerable de copias de $I$, denotadas $I_n = [0, 1_n]$, cocientada por la relación de equivalencia que identifica a $0$ en todas las copias. Decretemos que un subconjunto $U \subset M$ es abierto si se cumplen las siguientes condiciones:
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item Cada intersección $U \cap I_n$ es abierta en la topología usual de $I_n$.
+    \item Si $0 \in U$, entonces $\mathopen] 0, 1_n \mathclose[ \subset U$ para una cantidad cofinita de índices $n \in \N$.
+\end{enumerate}
+
+Consideremos ahora la cobertura de $M$ por los abiertos
+$$U_n = \mathopen] 0, 1_n \mathclose], \qquad V = \bigcup \nolimits_n \mathopen[ 0, 1_n \mathclose[.$$
+Para cada $U_n \cap V = \mathopen] 0, 1_n \mathclose[$, definamos la homotopía de funciones de transición
+$$
+g_{n,t} : \mathopen] 0, 1_n \mathclose[ \longrightarrow \GL_1(\C) = \C^\times, \qquad
+g_{n,t}(x) = (1 - x)^t.
+$$
+Esta información determina una homotopía de fibrados lineales $L_t \to M$.
+
+Por construcción, $L_0$ es el fibrado trivial, ya que sus funciones de transición son todas $1$. Sin embargo, $L_1$ no es trivial, por la siguiente razón. Si $f : V \to \C$ es una función continua, entonces la preimagen de un disco centrado en $f(0)$ es una vecindad de $0$ en $M$. Entonces $f$ es acotada en una cantidad cofinita de intervalos $\mathopen] 0, 1_n \mathclose[$ y, para los índices correspondientes $n \in \N$, se tiene
+$$\lim_{x \to 1_n} g_{n,1}(x) \cdot f(x) = \lim_{x \to 1_n} (1 - x) \cdot f(x) = 0.$$
+Por lo tanto, toda sección global $M \to L_1$ se anula en una cantidad cofinita de puntos $1_n$.
+\end{example}
+
+Para evitar situaciones como la del ejemplo anterior, en adelante solamente trabajaremos con fibrados vectoriales complejos sobre espacios topológicos \textbf{paracompactos}. (Recordemos que un espacio $M$ es paracompacto si toda cobertura abierta $\U$ de $M$ admite una partición de la unidad continua subordinada a $\U$.) La ventaja técnica de usar espacios paracompactos radica en que las \textbf{propiedades locales} de una cobertura abierta arbitraria se pueden transferir a una cobertura abierta numerable y localmente finita.
+
+\begin{lemma}
+Dada una cobertura abierta $\Gamma$ de un espacio topológico paracompacto $M$, existe otra cobertura abierta numerable $\{ U_n \}$ tal que cada componente conexa de cada $U_n$ está contenida en algún elemento de $\Gamma$.
+\end{lemma}
+
+\begin{proof}
+Tomemos una partición de la unidad $\Phi$ subordinada a $\Gamma$ y definamos
+$$U_S = \Big \{ p \in M : \varphi(p) > \varphi'(p) \text{ para todo } \varphi \in S, \varphi' \notin S \Big \}$$
+para cada subconjunto finito no vacío $S \subset \Phi$. Por construcción,
+\begin{itemize}
+    \itemsep 0em
+    \item $U_S$ está localmente definido por una cantidad finita de desigualdades,
+    \item $U_S$ está contenido en cualquier elemento de $\Gamma$ que contenga al soporte de algún $\varphi \in S$,
+    \item cada punto $p \in M$ está contenido en $V_{S_p}$, donde $S_p$ es el conjunto finito de funciones de $\Phi$ que no se anulan en $p$.
+\end{itemize}
+Entonces $\{ U_S \}$ es un refinamiento abierto de $\Gamma$. Además, si $S, T \subset \Phi$ son subconjuntos finitos de la misma cardinalidad $n \in \Z^+$, pero distintos, entonces $U_S, U_T$ son disjuntos. Por lo tanto, cada componente conexa de la unión disjunta
+$$U_n = \bigsqcup_{|S| = n} U_S$$
+también está contenida en algún elemento de $\Gamma$.
+\end{proof}
+
+\begin{lemma}
+Dada una cobertura abierta enumerable $\{ U_n \}$ de un espacio paracompacto $M$, existe una partición de la unidad $\{ \rho_n \}$ de $M$ tal que cada $\rho_n : M \to I$ está soportado en $U_n$.
+\end{lemma}
+
+\begin{proof}
+Tomemos una partición de la unidad $\Phi$ subordinada a $\{ U_n \}$ y definamos
+$$\sigma_n = \sum \Big \{ \varphi \in \Phi : \Supp(\phi) \subset U_j \text{ para algún } j < n \Big \}$$
+para cada número natural $n \in \N$. Entonces, las diferencias $\rho_n = \sigma_{n+1} - \sigma_n$ forman una partición de la unidad $\{ \rho_n \}$ de $M$ tal que cada $\rho_n$ está soportado en $U_n$.
+\end{proof}
+
+\begin{theorem}
+Dada una homotopía de fibrados $E_t \to M$ sobre un espacio paracompacto $M$, la clase de isomorfismo $[E_t]$ no depende del parámetro $t \in I$.
+\end{theorem}
+
+\begin{proof}
+Notemos que $E_{ct} \to M$ es una homotopía de fibrados entre $E_0$ y $E_c$, para todo instante intermedio $c \in I$. Entonces es suficiente demostrar que $[E_0] = [E_1]$.
+
+Diremos que un abierto $U \subset M$ es $E$-distinguido si la restricción $E \vert_{U \times I}$ es trivial. Para hallar una vecindad $E$-distinguida $U_p$ de $p \in M$, basta cubrir la franja vertical $\{ p \} \times I$ con un número finito de abiertos básicos $U_j \times I_j$ tales que $E \vert_{U_j \times I_j}$ es trivial y luego tomar $U_p = \bigcap_j U_j$. Una vez que $M$ admite una cobertura abierta $E$-distinguida, por los dos lemas anteriores, podemos hallar una cobertura $E$-distinguida numerable $\{ V_n \}$ y una partición de la unidad $\{ \rho_n \}$ de $M$ tales que cada función $\rho_n : M \to I$ está soportada en el respectivo abierto $V_n$.
+
+Sea $M_n \subset M \times I$ la gráfica de $\sigma_n = \rho_1 + \dots + \rho_n$, pensada como una copia isomorfa de $M$, y sea $F = f^\star(E)$ el pullback de $E$ bajo la función $f : M \times I \to M \times I$ definida por
+$$
+f(p,t) =
+  \begin{cases}
+    (p, \sigma_n(p)),     & \text{si } t \le \sigma_n(p) \\
+    (p, t),               & \text{si } \sigma_n(p) \le t \le \sigma_{n+1}(p), \\
+    (p, \sigma_{n+1}(p)), & \text{si } \sigma_{n+1}(p) \le t.
+  \end{cases}
+$$
+Por construcción,
+\begin{itemize}
+    \itemsep 0em
+    \item $F_t \to M$ es una homotopía de fibrados desde $F_0 = E \vert_{M_n}$ hasta $F_1 = E \vert_{M_{n+1}}$.
+    \item $V_n$ es un abierto $F$-distinguido, i.e., $F \vert_{V_n \times I}$ es trivial.
+\end{itemize}
+Entonces $F$ induce un isomorfismo local $g_n : F_0 \vert_{V_n} \to F_1 \vert_{V_n}$. Notemos que
+\begin{itemize}
+    \item $g_n$ es la identidad fuera del soporte de $\rho_n$.
+    \item $g_n$ se extiende a un isomorfismo global $E \vert_{M_n} \to E \vert_{M_{n+1}}$.
+\end{itemize}
+Notemos que todo punto de $M$ posee una vecindad $W \subset M$ tal que
+\begin{itemize}
+    \itemsep 0em
+    \item La sucesión $\rho_n \vert_W$ es eventualmente la función constante $0$.
+    \item La sucesión $\sigma_n \vert_W$ es eventualmente la función constante $1$.
+    \item La sucesión $g_n \vert_W$ es eventualmente el isomorfismo identidad de $E_1 \vert_W$.
+\end{itemize}
+Entonces, poniendo $h_n = g_n \circ \dots \circ g_1$, la función límite
+$$h : E_0 \longrightarrow E_1, \qquad h(x) = \lim_{n \to \infty} h_n(x)$$
+está bien definida, es continua y es un isomorfismo de fibrados vectoriales.
+\end{proof}
+
+\begin{corollary}
+Sean $E \to M$ un fibrado vectorial complejo y $N$ un espacio paracompacto. Dada una función continua $f : N \to M$, la clase de isomorfismo $[f^\star E] \in \Vect(N)$ depende únicamente de la clase de homotopía de $f$.
+\end{corollary}
+
+\begin{proof}
+Dada una homotopía ordinaria $h_t : N \to M$, que parte de $h_0 = f$, el pullback $h_t^\star(E)$ es una homotopía de fibrados vectoriales sobre $N$. Por el teorema anterior,
+$$[h_t^\star(E)] = [h_0^\star(E)] = [f^\star E],$$
+independientemente del valor del parámetro $t \in I$.
+\end{proof}
+
+\begin{corollary}
+Sea $f : M \to N$ una equivalencia homotópica entre dos espacios paracompactos. Entonces $f^\star : \Vect(N) \to \Vect(M)$ es un isomorfismo de semianillos.
+\end{corollary}
+
+\begin{proof}
+Sea $g : N \to M$ una inversa homotópica de $f$. Por el corolario anterior,
+$$
+f^\star \circ g^\star = (g \circ f)^\star = \id, \qquad
+g^\star \circ f^\star = (f \circ g)^\star = \id.
+$$
+Entonces $f^\star$ es un isomorfismo de semianillos.
+\end{proof}

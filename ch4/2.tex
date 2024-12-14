@@ -1,0 +1,103 @@
+\section{El principio del rompimiento}
+
+\textbf{Romper} un fibrado vectorial $E \to M$ consiste en reemplazar a $E$ con el pullback $f^\star E$ bajo una función continua $f : N \to M$ escogida de tal manera que
+\begin{itemize}
+    \itemsep 0em
+    \item $f^\star : H^\star(M) \to H^\star(N)$ sea un homomorfismo de anillos inyectivo.
+    \item $f^\star E$ contenga una bandera de fibrados $0 = F_0 \subset F_1 \subset \dots \subset F_r = f^\star E$.
+\end{itemize}
+El propósito de romper $E$ es calcular $c(E)$ en dos pasos:
+\begin{itemize}
+    \itemsep 0em
+    \item Usar la bandera $\{ F_j \}$ y la fórmula de Whitney para calcular
+    $$f^\star \circ c(E) = c(F_r / F_0) = c(F_1 / F_0) \smile \dots \smile c(F_r / F_{r-1}).$$
+    
+    \item Hallar el único elemento $c(E) \in H^\star(M)$ cuyo pullback es $f^\star \circ c(E)$.
+\end{itemize}
+En adelante, diremos que
+\begin{itemize}
+    \itemsep 0em
+    \item $f$ \textbf{rompe totalmente} a $E$, si $f^\star E$ contiene una bandera completa de fibrados.
+    \item $f$ \textbf{rompe parcialmente} a $E$, si $f^\star E$ contiene un subfibrado lineal.
+    \item $f$ \textbf{no rompe} a $E$, si $f^\star E$ sólo contiene la bandera trivial $0 \subset f^\star E$.
+\end{itemize}
+
+El \textbf{principio del rompimiento} (en inglés: \textit{splitting principle}) afirma que, para todo fibrado vectorial $E \to M$, existe una función continua $f : N \to M$ que rompe totalmente a $E$. Nuestra principal herramienta para construir rompimientos sistemáticamente es el siguiente teorema, que enunciamos sin demostración.
+
+\begin{theorem}[Leray-Hirsch]
+Sean $\pi : E \to M$ un fibrado topológico, $\iota : F \to E$ la inclusión de una fibra y $A$ un anillo conmutativo tales que
+\begin{itemize}
+    \itemsep 0em
+    \item Cada $H^n(F; A)$ es un módulo libre de dimensión finita.
+    \item Existen clases $c_j \in H^{n_j}(E; A)$ tales que $\{ \iota^\star(c_j) \}$ es una base de $H^\star(F; A)$.
+\end{itemize}
+Entonces, el homomorfismo de $H^\star(M; A)$-módulos graduados
+$$
+H^\star(M; A) \otimes_A H^\star(F; A) \longrightarrow H^\star(E; A), \qquad
+b \otimes \iota^\star(c_j) \longmapsto \pi^\star(b) \smile c_j
+$$
+es un isomorfismo.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[pp. 432-434]{hatcher1}.
+\end{proof}
+
+\begin{lemma}
+Todo fibrado vectorial de rango positivo admite un rompimiento parcial.
+\end{lemma}
+
+\begin{proof}
+Sea $E \to M$ un fibrado vectorial de rango $n+1$ y sean
+\begin{itemize}
+    \itemsep 0em
+    \item $\pi : \P(E) \to M$, la proyectivización de $E$.
+    \item $\alpha : \P(E) \to \P^\infty$, la proyectivización de un anclaje $E \to \C^\infty$.
+    \item $\iota : \P^n \to \P(E)$, la inclusión de la fibra típica de $\pi$.
+\end{itemize}
+Notemos que
+\begin{itemize}
+    \itemsep 0em
+    \item El pullback de la inclusión $\alpha \circ \iota : \P^n \to \P^\infty$ es el homomofismo cociente
+    $$
+    \iota^\star \circ \alpha^\star :
+    H^\star(\P^\infty) \cong \Z[\xi] \longrightarrow
+    H^\star(\P^n)      \cong \dfrac {\Z[\xi]} {\langle \xi^{n+1} \rangle}.
+    $$
+    
+    \item Las clases $1$, $\iota^\star \circ \alpha^\star(\xi)$, $\dots$, $\iota^\star \circ \alpha^\star(\xi^n)$ forman la base estándar de $H^\star(\P^n)$.
+\end{itemize}
+Entonces, por el teorema de Leray-Hirsch,
+\begin{itemize}
+    \itemsep 0em
+    \item Las clases $1$, $\alpha^\star(\xi)$, $\dots$, $\alpha^\star(\xi^n)$ forman una $H^\star(M)$-base de $H^\star \circ \P(E)$.
+    \item El homomorfismo de anillos $\pi^\star : H^\star(M) \to H^\star \circ \P(E)$ es inyectivo.
+\end{itemize}
+Finalmente, por construcción,
+\begin{itemize}
+    \itemsep 0em
+    \item $\alpha(\ell)$ es una recta contenida en la imagen anclada de $E_{\pi(\ell)}$ en $\P^\infty$.
+    \item $\alpha$ clasifica a un subfibrado lineal de $\pi^\star E$.
+\end{itemize}
+Por ende, $\pi$ rompe parcialmente a $E$.
+\end{proof}
+
+\begin{lemma}[Principio del rompimiento]
+Todo fibrado vectorial admite un rompimiento total.
+\end{lemma}
+
+\begin{proof}
+Sea $E \to M$ un fibrado vectorial de rango positivo. (Si $E$ es de rango $0$, entonces no hay nada que demostrar.) Notemos que
+\begin{itemize}
+    \itemsep 0em
+    \item Por el lema anterior, existe una función $f$ que rompe parcialmente a $E$.
+    \item Por definición de rompimiento parcial, existe un subfibrado lineal $L$ de $F = f^\star E$.
+    \item Por inducción en el rango, existe una función $g$ que rompe totalmente a $Q = F/L$.
+    \item Por definición de rompimiento total, existe una bandera completa
+    $$0 = \dfrac {F_1} {F_1} \subset \dfrac {F_2} {F_1} \subset \dots \subset \dfrac {F_n} {F_1} = g^\star Q,$$
+    donde $F_1 = g^\star L$ y $F_n = g^\star F$.
+    
+    \item Por construcción, $0 = F_0 \subset F_1 \subset F_2 \subset \dots \subset F_n = g^\star F$ es una bandera completa.
+\end{itemize}
+Entonces, $g$ rompe totalmente a $F$. Por ende, $f \circ g$ rompe totalmente a $E$.
+\end{proof}

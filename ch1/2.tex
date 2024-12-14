@@ -1,0 +1,124 @@
+\section{El fibrado tangente de una foliación regular}
+
+Toda foliación holomorfa regular $\F$ sobre una variedad compleja $M$ determina un subfibrado vectorial holomorfo $T\F \subset TM$, llamado el \textbf{fibrado tangente} de $\F$, cuya fibra $T_p \F$ sobre cada punto $p \in M$ es el espacio tangente de la única hoja de $\F$ que pasa por $p$. Para verificar que
+$$T\F = \bigsqcup_{p \in M} \{ p \} \times T_p\F$$
+satisface la condición de trivialidad local, basta consultar el modelo local
+$$T\F_{n,k} = \bigsqcup_{p \in \Delta^n} \{ p \} \times T_p \F_{n,k} \cong \Delta^n \times \C^k,$$
+donde $\F_{n,k}$ es la foliación de $\Delta^n$ por polidiscos $\Delta_z \cong \Delta^k$ para cada $z \in \Delta^{n-k}$.
+
+La construcción de $T\F$ es útil para estudiar una foliación $\F$ previamente dada, pero no nos sirve para generar nuevas foliaciones sobre $M$. Lo realmente interesante sería usar un subfibrado vectorial holomorfo $E \subset TM$ (construido de la manera usual, i.e., especificando bases locales de secciones) para construir foliaciones cuyo fibrado tangente es $E$.
+
+Antes de continuar, fijaremos terminología. Una \textbf{variedad integral} de $E$ es una subvariedad inyectivamente inmersa $L \subset M$ cuyo fibrado tangente es $TL = E \vert_L$. Si la unión de las variedades integrales de $E$ es todo $M$, entonces $E$ se dice \textbf{integrable}. Una carta distinguida $(U, \varphi)$ de $M$ es \textbf{compatible} con $E$ si todas las placas de $\varphi$ son variedades integrales de $E$. Si $M$ admite un atlas distinguidas compatibles con $E$, entonces $E$ se dice \textbf{completamente integrable}. Finalmente, $E$ se dice \textbf{involutivo} si, dadas dos secciones locales $X, Y$ de $E$, el corchete de Lie $[X,Y]$ también es una sección local de $E$.
+
+Notemos que $E$ es (completamente) integrable si genera foliaciones (regulares) locales en una cobertura abierta de $M$. Intuitivamente, $E$ es involutivo si genera ``foliaciones infinitesimales'' en los tallos del haz estructural de $M$, pensados como ``vecindades infinitesimales'' de $M$.
+
+\begin{theorem}[Teorema local de Frobenius]
+Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item $E$ es completamente integrable.
+    \item $E$ es integrable.
+    \item $E$ es involutivo.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+a)$\implies$b) Si $E$ es completamente integrable, entonces $M$ es la unión de las placas de las cartas distinguidas compatibles con $E$. Por ende, $E$ es integrable.
+
+b)$\implies$c) Si $E$ es integrable, entonces las secciones de $E$ son los campos vectoriales sobre $M$ que son tangentes a todas las variedades integrales de $E$. Como el corchete de Lie preserva esta tangencia, entonces $E$ es involutivo.
+
+c)$\implies$a) Como el problema es de carácter local, supondremos que $M \subset \C^n$ es una vecindad del origen y \textit{encogeremos implícitamente} esta vecindad cada vez que utilicemos una construcción local\footnote{Formalmente, estamos trabajando con \textit{gérmenes} de funciones y campos holomorfos en $p$, no con funciones y campos holomorfos de verdad.}, e.g., el teorema de la función inversa.
+
+Agrupemos las coordenadas de $\C^n$ en dos bloques $\C^k$ y $\C^{n-k}$, de tal manera que los campos coordenados de $\C^{n-k}$ generen un complemento de $E$ en $TM$. Sea $\iota : E \to TM$ la inclusión y sea $\pi : TM \to F$ la proyección canónica al subfibrado generado por los campos coordenados de $\C^k$. Por construcción, $\pi \circ \iota : E \to F$ es un isomorfismo de fibrados vectoriales que respeta el corchete de Lie. Como $F$ tiene una base local de campos que conmutan (los campos coordenados de $\C^k)$, entonces $E$ también tiene una base local de campos $X_1, \dots, X_k$ que conmutan.
+
+Sea $\Phi_i^{t_i} : M \to M$ el flujo de $X_i$. Notemos que $\Phi^t = \Phi_1^{t_1} \circ \cdots \circ \Phi_k^{t_k}$ localmente no depende del orden en que compongamos los flujos $\Phi_i^{t_i}$. Para cada punto $p \in M$, tenemos
+$$\p {t_i} \Phi^t(p) = \p {t_i} \left( \Phi_i^{t_i} \circ \Phi_1^{t_1} \circ \cdots \circ \widehat {\Phi_i^{t_i}} \circ \cdots \circ \Phi_k^{t_k}(p) \right) = X_i \circ \Phi^t(p),$$
+así que cada órbita $t \mapsto \Phi^t(p)$ es una variedad integral de $E$. Por construcción, el plano $y = 0$ es transverso a $E$, así que $(t, z) \mapsto \Phi^t(0, z)$ es una reparametrización local de $M$. La inversa de esta reparametrización es una carta distinguida compatible con $E$. Por lo tanto, $E$ es completamente integrable.
+\end{proof}
+
+Hasta el momento, todo lo que sabemos es que la involutividad de $E$ nos brinda suficientes cartas distinguidas compatibles con $E$ para \textit{intentar} construir las hojas de una foliación pegando variedades integrales de $E$. Ahora tenemos que demostrar es que este intento de pegado siempre tendrá éxito.
+
+Empezamos demostrando la ausencia de obstrucciones locales al pegado:
+
+\begin{proposition}
+La intersección de una variedad integral de $E$ y una carta distinguida $(U, \varphi)$ compatible con $E$ tiene una cantidad numerable de componentes conexas. Cada componente está abiertamente encajada en una única placa de $\varphi$.
+\end{proposition}
+
+\begin{proof}
+Sea $L$ una variedad integral de $E$. La intersección $U \cap L$ es abierta en $L$, porque $U$ es abierto en $M$ y la inmersión $L \hookrightarrow M$ es una función continua. Además, $U \cap L$ tiene una cantidad numerable de componentes conexas, porque $L$ es segundo enumerable.
+
+Cada componente conexa $C$ de $U \cap L$ es una variedad integral de $E \vert_U$. Pero $E \vert_U$ es el fibrado tangente de la foliación por placas de $\varphi$, así que $C$ está encajada en una placa $P$. Este encaje es abierto, porque $C$ y $P$ son de la misma dimensión.
+\end{proof}
+
+\begin{proposition}
+Supongamos que $E$ es integrable. Si $L_1$ y $L_2$ son variedades integrales de $E$, entonces $L = L_1 \cap L_2$ es abierto en cada $L_i$. Además, las inclusiones $L \hookrightarrow L_i$ inducen la misma estructura compleja sobre $L$ que la inclusión $L \hookrightarrow M$.
+\end{proposition}
+
+\begin{proof}
+Sea $(U, \varphi)$ una carta distinguida compatible con $E$. Consideremos $C = C_1 \cap C_2$, donde cada $C_i$ es una componente conexa de $U \cap L_i$. Si $C$ es no vacío, entonces $C_1, C_2$ están encajados abiertamente en la misma placa $P$ de $\varphi$. Así, $C$ está abiertamente encajado en $P$. Por tanto, $C$ está abiertamente encajado en cada $L_i$.
+
+Las distintas elecciones de la carta $(U, \varphi)$ y de las componentes conexas $C_1, C_2$ generan una cobertura de $L$ por abiertos comunes de $L_1, L_2$. Entonces $L$ es abierto en cada $L_i$. Notemos que cada inclusión $\lambda_i : L \hookrightarrow L_i$ induce sobre $L$ la misma estructura compleja que la restricción a $L$ de la inclusión $\mu_i : L_i \hookrightarrow M$. Pero $\mu_i \vert_L$ es igual a la inclusión directa $\mu : L \hookrightarrow M$, ya que ambas se representan localmente como el encaje de una placa en una carta distinguida compatible con $E$. Por ende, tanto $\lambda_i$ como $\mu$ inducen la misma estructura compleja sobre $L$.
+\end{proof}
+
+Entonces siempre podemos pegar variedades integrales localmente:
+
+\begin{corollary}
+Supongamos que $E$ es integrable. Si $\Lambda$ es una familia numerable de variedades integrales de $E$, entonces $\L = \bigcup \Lambda$ también es una variedad integral de $E$.
+\end{corollary}
+
+\begin{proof}
+Por la proposición anterior, la intersección $L'' = L \cap L'$ de cada par $L, L' \in \Lambda$ tiene una única estructura compleja compatible con los encajes $L'' \hookrightarrow L$, $L'' \hookrightarrow L'$ y la inmersión $L'' \hookrightarrow M$. Entonces $\L$ es una variedad compleja bien definida y la inclusión $\L \hookrightarrow M$ es una inmersión cuya restricción a cada $L \in \Lambda$ es la inmersión original $L \hookrightarrow M$. Como el fibrado tangente de $L \in \Lambda$ es $E \vert_L$, el fibrado tangente de $\L$ es $E \vert_\L$. Por lo tanto, $\L$ es una variedad integral de $E$.
+\end{proof}
+
+Las hojas de una foliación $\F$ son variedades integrales \textit{conexas} de $T\F$. Como una unión de variedades integrales conexas de $E$ no tiene por qué ser también conexa\footnote{Adoptaremos la convención de que un espacio topológico es conexo si tiene una única componente conexa. En particular, el espacio topológico vacío \textit{no} es conexo.}, debemos tomar ciertas precauciones antes de pegar variedades integrales. Diremos que las variedades integrales conexas $L_1, \dots, L_r$ forman un \textbf{camino} desde $L_1$ hasta $L_r$ si las intersecciones $L_i \cap L_{i+1}$ son no vacías. Si existe un camino desde $L$ hasta $L'$, diremos que $L'$ es \textbf{alcanzable} desde $L$.
+
+Asumiendo que $E$ es integrable, las variedades integrales de $E$ forman una base de una nueva topología sobre $M$, llamada la \textbf{topología de las hojas} de $E$, pues sus componentes conexas se denominan las \textbf{hojas} de $E$. Notemos que, si $L$ es una variedad integral conexa de $E$, entonces $L$ también es conexa en la topología de las hojas. En este caso, denotaremos por $[L]$ la única hoja que contiene a $L$.
+
+\begin{proposition}
+Supongamos que $E$ es integrable. Si $L$ es una variedad integral conexa de $E$, entonces las siguientes descripciones definen el mismo conjunto:
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item La unión de las variedades integrales conexas de $E$ que contienen a $L$.
+    \item La unión de las variedades integrales conexas de $E$ que intersecan a $L$.
+    \item La unión de las variedades integrales conexas de $E$ alcanzables desde $L$.
+    \item La hoja $[L]$ de $E$ que contiene a $L$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Las inclusiones a) $\subset$ b) $\subset$ c) $\subset$ d) son obvias. Notemos que, si $L'$ es alcanzable desde $L$, digamos, mediante el camino $L_1, \dots, L_r$, entonces existe una variedad integral conexa de $E$ que contiene tanto a $L$ como a $L'$, a saber, $L_1 \cup \dots \cup L_r$. Esto demuestra que c) $\subset$ a), pero también demuestra que c) es simultáneamente abierto y cerrado en la topología de las hojas, i.e., es una unión de hojas. Por construcción, $L$ está contenida en c). Por lo tanto, d) $\subset$ c).
+\end{proof}
+
+Estamos listos para demostrar el resultado principal de esta sección:
+
+\begin{theorem}
+Si $E$ es integrable, entonces las hojas de $E$ son variedades integrales de $E$.
+\end{theorem}
+
+\begin{proof}
+Por construcción, las hojas de $E$ son localmente homeomorfas a $\C^k$, donde $k$ es el rango de $E$ como fibrado vectorial holomorfo. Además, las hojas satisfacen la propiedad de Hausdorff, pues la continuidad de las inmersiones $L \hookrightarrow M$ implica que las inclusiones $[L] \hookrightarrow M$ también son continuas.
+
+Fijemos una cobertura numerable de $M$ por cartas distinguidas $(U_j, \varphi_j)$ compatibles con $E$ y llamemos \textit{placas relevantes} a las placas de todos los $\varphi_j$. Notemos que, dada una variedad integral conexa $L$ de $E$, sólo existe una cantidad numerable de caminos de placas relevantes cuya primera placa interseca a $L$. Pero toda placa relevante contenida en $[L]$ es accesible desde $L$ mediante un camino de placas relevantes. Entonces $[L]$ es la unión de una cantidad numerable de tales placas relevantes. Por supuesto, las placas relevantes son variedades integrales de $E$, así que $[L]$ también es una variedad integral de $E$.
+\end{proof}
+
+\begin{corollary}[Teorema global de Frobenius]
+Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item $E$ es integrable.
+    \item $E$ es el fibrado tangente de una foliación regular de $M$.
+    \item $E$ es el fibrado tangente de una \underline{única} foliación regular de $M$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Las implicaciones c)$\implies$b)$\implies$a) son obvias. Si $E$ es integrable, entonces la familia de hojas de $E$ es la única foliación regular cuyo fibrado tangente es $E$, es decir, a)$\implies$c).
+\end{proof}
+
+\begin{corollary}
+Existe una correspondencia biunívoca entre las foliaciones regulares por curvas (i.e., de dimensión $1$) y los subfibrados lineales de $TM$.
+\end{corollary}
+
+\begin{proof}
+Todo subfibrado lineal de $TM$ es trivialmente involutivo.
+\end{proof}

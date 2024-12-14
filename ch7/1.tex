@@ -1,0 +1,43 @@
+\section{Definiciones básicas}
+
+Tras una larga excursión por la topología algebraica, en este capítulo final regresaremos a las foliaciones holomorfas. Supongamos dadas una variedad compleja $M$ y una foliación singular por curvas $\F$ de $M$ cuyo conjunto singular $\Sing(\F)$ es discreto. Consideremos el problema de contar los puntos singulares de $\F$ con multiplicidad, i.e., de calcular la suma
+$$\# \Sing(\F) = \sum_{p \in M} \mu_p(\F)$$
+usando el método más eficiente posible.
+
+Por supuesto, si conocemos la sección $\sigma$ del fibrado tangente torcido $TM \otimes L$ que genera las hojas de $\F$, entonces el teorema 2.8 nos permite usar una representación local
+$$\sigma = f_1 \, \p {z_1} + \dots + f_n \, \p {z_n}$$
+centrada en cada punto singular $p \in \Sing(\F)$ para calcular el número de Milnor
+$$\mu_p(\F) = \dim_\C \dfrac {\C \{ z_1, \dots, z_n \}} {\langle f_1, \dots, f_n \rangle}.$$
+En cambio, si sólo conocemos el fibrado torcido $TM \otimes L$, mas no la sección $\sigma$, es posible que no tengamos suficiente información para contar los puntos singulares de $\F$.
+
+\begin{example}
+Sea $M$ el plano complejo $\C^2$ y sea $L$ el fibrado trivial $\O_M$. Entonces, una sección de $TM \otimes L$ es un campo vectorial holomorfo global sobre $\C^2$. Los campos
+$$X_0 = \p x, \qquad X_1 = x \, \p x + y \, \p y$$
+tienen cero y un puntos singulares, respectivamente. Por lo tanto, la elección de $L$ no determina cuántas singularidades tiene una foliación generada por una sección de $TM \otimes L$.
+\end{example}
+
+Para evitar la situación del ejemplo anterior, en adelante asumiremos que $M$ es una variedad compleja \textit{compacta} de dimensión $n$. La \textbf{aplicación grado}\footnote{La notación $\int_M \omega$ está motivada por el hecho de que $\int_M \omega$ se puede calcular integrando una $2n$-forma $C^\infty$ que representa a $\omega$ como clase de cohomología de De Rham.} de $M$ se define como
+$$\int_M : H^{2n}(M) \longrightarrow \Z, \qquad \int_M \omega = [M] \frown \omega,$$
+donde $[M] \in H_{2n}(M)$ es la \textbf{clase fundamental} inducida por la orientación canónica de $M$ como variedad compleja.
+
+\begin{proposition}
+La foliación $\F$ tiene exactamente
+$$\# \Sing(\F) = \int_M c_n(TM \otimes L)$$
+puntos singulares, contados con multiplicidad.
+\end{proposition}
+
+\begin{proof}
+Tomemos una descomposición celular de $M$ con una $2n$-célula distinguida $e_i$ centrada en cada punto singular $p_i \in \Sing(\F)$. Entonces, el cociclo de obstrucción de $\sigma$ es
+$$
+c(\sigma)(e_\alpha) =
+    \begin{cases}
+        \mu_{p_i}(\F), & \text{para } e_\alpha = e_i, \\
+        0,             & \text{para cualquier otra $2n$-célula.}
+    \end{cases}
+$$
+Por lo tanto, $\F$ tiene exactamente
+$$\# \Sing(\F) = \sum_i \mu_{p_i}(\F) = \sum_\alpha c(\sigma)(e_\alpha) = \int_M c_n(TM \otimes L)$$
+puntos singulares, contados con multiplicidad.
+\end{proof}
+
+

@@ -1,0 +1,133 @@
+\section{Definiciones básicas}
+
+Recordemos que, según el teorema de clasificación del capítulo 3, el objeto que directamente corresponde a un fibrado lineal $L \to M$ no es una única función clasificadora $M \to \P^\infty$, sino una \textit{clase de homotopía} de tales funciones. Desafortunadamente, las clases de homotopía son objetos abstractos que sólo se pueden manipular indirectamente a través de representantes y, en general, no es fácil determinar si dos funciones pertenecen a la misma clase de homotopía.
+
+En este capítulo, construiremos una representación más concreta de las clases de homotopía de funciones $M \to \P^\infty$. Para ello, asumiremos que $M$ es un complejo celular y adaptaremos las herramientas algebraicas del capítulo anterior al problema de construir una homotopía entre dos funciones dadas $f_0, f_1 : M \to \P^\infty$. En particular, encontraremos una \textbf{primera obstrucción} a la existencia de tal homotopía, que resultará ser la \textbf{única obstrucción}, pues, como demostraremos a continuación, el espacio proyectivo $\P^\infty$ tiene un único grupo de homotopía no trivial.
+
+\begin{proposition}
+El espacio de Stiefel $V_1(\C^\infty)$ es contractible.
+\end{proposition}
+
+\begin{proof}
+Definamos las funciones $A, B : \C^\infty \to \C^\infty$ por
+$$A(x_0, x_1, \dots) = (0, x_0, x_1, \dots), \qquad B(x_0, x_1, \dots) = (1, 0, 0, \dots).$$
+Usando la notación $[p,q]_t$ de la proposición 3.8, definamos la contracción
+$$
+h_t =
+  \begin{cases}
+    [\id, A]_{2t}, & \text{si } 2t \in [0,1], \\
+    [A, B]_{2t-1}, & \text{si } 2t \in [1,2].
+  \end{cases}
+$$
+Notemos que, si $x \in \C^\infty$ es un vector no nulo, entonces la curva
+$$\gamma : I \longrightarrow \C^\infty, \qquad \gamma(t) = h_t(x)$$
+no pasa por el vector nulo. Por ende, $h_t \mid V_1(\C^\infty)$ es una contracción de $V_1(\C^\infty)$.
+\end{proof}
+
+\begin{remark}
+De hecho, \textit{todos} los espacios de Stiefel $V_n(\C^\infty)$ son contractibles.
+\end{remark}
+
+\begin{proposition}
+El único grupo de homotopía no trivial de $\P^\infty$ es $\pi_2(\P^\infty) \cong \Z$.
+\end{proposition}
+
+\begin{proof}
+Como $V_1(\C^\infty)$ es contractible, la sucesión exacta larga del fibrado
+$$
+\begin{tikzcd}[row sep = large, column sep = large]
+    0 \arrow[r] & \C^\times \arrow[r] & V_1(\C^\infty) \arrow[r] & \P^\infty \arrow[r] & 0
+\end{tikzcd}
+$$
+se rompe en los siguientes tramos:
+$$
+\begin{tikzcd}
+    \cancelto 0 {\pi_k \circ V_1(\C^\infty)} \arrow[r]
+        & \pi_k(\P^\infty) \arrow[r]
+        & \pi_{k-1}(\C^\times) \arrow[r]
+        & \cancelto 0 {\pi_{k-1} \circ V_1(\C^\infty)}.
+\end{tikzcd}
+$$
+Entonces, los grupos de homotopía de $\P^\infty$ son
+$$
+\pi_k(\P^\infty) = \pi_{k-1}(\C^\times) =
+  \begin{cases}
+    \Z, & \text{si } k  =  2, \\
+    0,  & \text{si } k \ne 2,
+  \end{cases}
+$$
+como se quería demostrar.
+\end{proof}
+
+Dadas dos funciones $f_0, f_1 : M \to \P^\infty$, en general no existe una homotopía entre $f_0$ y $f_1$. Sin embargo, como hemos visto en el capítulo anterior, siempre podemos construir una \textbf{homotopía hueca}, i.e., una función $h : M^\square \to \P^\infty$ definida sobre el \textbf{cilindro hueco}
+$$M^\square = (M \times \{ 0, 1 \}) \cup (M^1 \times I),$$
+tal que cada restricción $h \vert_{M \times \{ i \}}$ coincide con $f_i \times \{ i \}$. El \textbf{cociclo de diferencia}
+$$d(h) : C_2(M) \longrightarrow \pi_2(\P^\infty)$$
+asigna a cada $2$-célula $e_\alpha \subset M$ la obstrucción a extender $h$ sobre $e_\alpha \times I$.
+
+\begin{proposition}
+El cociclo de diferencia $d(h)$ es, en efecto, un cociclo celular.
+\end{proposition}
+
+\begin{proof}
+La obstrucción a extender $h$ sobre $M^2 \times I$ es el cociclo celular
+$$c(h) = d(h) \times \overline I \in C^3(M \times I).$$
+Tomando cofronteras en la ecuación anterior, tenemos
+$$\delta c(h) = \delta d(h) \times \overline I = 0.$$
+Como la asignación $C^\bullet(M) \to C^\bullet(M \times I)$, $\alpha \mapsto \alpha \times \overline I$ es inyectiva, entonces $\delta d(h) = 0$.
+\end{proof}
+
+\begin{proposition}
+El cociclo de diferencia $d(h)$ se anula si y sólo si $h$ se puede extender a una homotopía ordinaria (no hueca) entre $f_0$ y $f_1$.
+\end{proposition}
+
+\begin{proof}
+Por definición, $d(h) = 0$ si y sólo si $h$ se puede extender sobre $M^2 \times I$. Pero, si $h$ ya está definida sobre $M^2 \times I$, entonces no hay más obstrucciones a extender $h$ sobre el resto de $M \times I$, porque todos los grupos de homotopía superiores $\pi_j(\P^\infty)$, con $j \ge 3$, son triviales.
+\end{proof}
+
+\begin{lemma}
+Dadas una función de referencia $f : M \to \P^\infty$ y un cociclo celular $d \in C^2(M)$, existe una homotopía hueca $h : M^\square \to \P^\infty$ que comienza en $f$, tal que $d(h) = d$.
+\end{lemma}
+
+\begin{proof}
+Por el argumento del teorema 5.7, existe una homotopía hueca
+$$h : (M^2)^\square = (M \times I)^2 \longrightarrow \P^\infty$$
+que comienza en $f \vert_{M^2}$, tal que $d(h) = d$. La obstrucción a extender $h$ sobre $(M \times I)^3$ es
+$$c(h) = \cancel {c(f) \times \overline 0} + c(f') \times \overline 1 + d \times \overline I,$$
+donde $f' : M^2 \to \P^\infty$ es el extremo final de $h$. Tomando cofronteras, tenemos
+$$c(f') \times \overline I = 0,$$
+lo cual implica que $c(f') = 0$. Entonces, $h$ se puede extender a una homotopía hueca $M^\square \to \P^\infty$ que comienza en $f$, tal que $d(h) = d$.
+\end{proof}
+
+Si $h_1, \dots, h_n : M^\square \to \P^\infty$ son homotopías huecas tales que, para cada $i \ge 2$, $h_i$ empieza en el extremo final de $h_{i-1}$, entonces la \textbf{concatenación} $\widetilde h = h_1 \star \dots \star h_n : M^\square \to \P^\infty$ se define por
+$$
+\widetilde h(x,t) =
+  \begin{cases}
+    h_1(x, nt),     & \text{si } nt \in [0,1], \\
+    h_2(x, nt - 1), & \text{si } nt \in [1,2], \\
+    \dots & \dots \\
+    h_n(x, nt - n + 1), & \text{si } nt \in [n-1,n].
+  \end{cases}
+$$
+Por otro lado, la \textbf{reversa} de una homotopía hueca $h : M^\square \to \P^\infty$ se define por
+$$h^{-1} : M^\square \longrightarrow \P^\infty, \qquad h^{-1}(x, t) = h(x, 1-t).$$
+
+\begin{proposition}
+Los cociclos de diferencia de una concatenación y una reversa son
+$$d(h_1 \star \dots \star h_n) = d(h_1) + \dots + d(h_n), \qquad d(h^{-1}) = -d(h).$$
+\end{proposition}
+
+\begin{proof}
+Esto se deduce de la definición de las operaciones del grupo $\pi_2(\P^\infty)$.
+\end{proof}
+
+Notemos que, si $g : N \to M$ es una función celular, entonces $g$ determina una función celular entre los respectivos cilindros huecos $g^\square : N^\square \to M^\square$. Diremos que el \textbf{pullback} de $h$ bajo $g$ es la composición $g^\star(h) = h \circ g^\square$.
+
+\begin{proposition}[Naturalidad]
+El cociclo de diferencia de $g^\star(h)$ es
+$$d \circ g^\star(h) = g^\star \circ d(h).$$
+\end{proposition}
+
+\begin{proof}
+Análoga a la proposición 5.4.
+\end{proof}

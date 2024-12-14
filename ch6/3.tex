@@ -1,0 +1,68 @@
+\section{Reconstruyendo la estructura de grupo}
+
+Consideremos a $\Pic(M)$ como el \textit{conjunto} de fibrados lineales $L \to M$ salvo isomorfismo, i.e., ignorando su estructura de grupo. Definamos la acción de grupo
+$$H^2(M) \times \Pic(M) \longrightarrow \Pic(M), \qquad [d] \cdot [L_0] = [L_1]$$
+de la siguiente manera. Por el lema 6.5, existe una homotopía hueca $h : M^\square \to \P^\infty$ que comienza en una función clasificadora de $L_0$, tal que $d(h) = d$. Sea $L_1 \to M$ el fibrado lineal clasificado por el extremo final de $h$.
+
+\begin{proposition}
+La acción de $H^2(M)$ sobre $\Pic(M)$ está bien definida.
+\end{proposition}
+
+\begin{proof}
+Supongamos que, eligiendo otra homotopía hueca $h' : M^\square \to \P^\infty$, deducimos que
+$$[d] \cdot [L_0] = [L_2].$$
+Como los extremos iniciales de $h, h'$ clasifican al mismo fibrado lineal $L_0 \to M$, dichos extremos iniciales están unidos por una homotopía ordinaria $g : M \times I \to \P^\infty$. Entonces,
+$$\widetilde h = h^{-1} \star g \star h' : M^\square \longrightarrow \P^\infty$$
+es una homotopía hueca entre los extremos finales de $h, h'$ tal que
+$$d(\widetilde h) = -d(h) + \cancel {d(g)} + d(h')$$
+es una cofrontera. Por el lema 6.10, los extremos finales de $h, h'$ son homotópicos. Entonces, los fibrados lineales $L_1, L_2 \to M$ clasificados por dichos extremos finales son isomorfos.
+\end{proof}
+
+\begin{proposition}
+La acción de $H^2(M)$ sobre $\Pic(M)$ es libre y transitiva.
+\end{proposition}
+
+\begin{proof}
+Por el lema 6.9, si $h : M^\square \to \P^\infty$ es una homotopía hueca cuyos extremos clasifican a un mismo fibrado lineal $L \to M$, entonces $d(h)$ es una cofrontera. Es decir, $[d] \cdot [L] = [L]$ implica que $[d] = 0$. Entonces, la acción de $H^2(M)$ sobre $\Pic(M)$ es libre.
+
+Por otro lado, para todo par de fibrados lineales $L_0, L_1 \to M$, siempre existe una homotopía hueca $h : M^\square \to \P^\infty$ entre una función clasificadora de $L_0$ y una función clasificadora de $L_1$. Así, $[d(h)] \cdot [L_0] = [L_1]$. Entonces, la acción de $H^2(M)$ sobre $\Pic(M)$ es transitiva.
+\end{proof}
+
+Por los resultados anteriores, tenemos una biyección bien definida
+$$\gamma : \Pic(M) \longrightarrow H^2(M)$$
+que asigna a cada fibrado lineal $L \to M$ la única clase de cohomología
+$$\gamma(L) \in H^2(M)$$
+tal que $\gamma(L) \cdot [L]$ es el fibrado trivial $M \times \C \to M$.
+
+\begin{proposition}[Naturalidad]
+Dadas una función continua $f : N \to M$ cuyo dominio es un complejo celular $N$ y un fibrado lineal $L \to M$, se tiene
+$$\gamma \circ f^\star(L) = f^\star \circ \gamma(L).$$
+\end{proposition}
+
+\begin{proof}
+Análoga a la proposición 5.8.
+\end{proof}
+
+\begin{proposition}
+La aplicación $\gamma : \Pic(M) \to H^2(M)$ asociada a $M$ está determinada por la aplicación $\gamma : \Pic(\P^\infty) \to H^2(\P^\infty)$ asociada al espacio proyectivo $\P^\infty$.
+\end{proposition}
+
+\begin{proof}
+Análoga a las proposiciones 4.4 y 5.11.
+\end{proof}
+
+\begin{theorem}
+La aplicación $c_1 : \Pic(M) \to H^2(M)$ es un isomorfismo de grupos abelianos.
+\end{theorem}
+
+\begin{proof}
+Como $c_1^1$ es un generador de $H^2(\P^\infty)$, existe una constante $\lambda \in \Z$ tal que
+$$\gamma \circ E_1(\C^\infty) = \lambda \, c_1^1.$$
+Esta constante debe ser $\lambda = \pm 1$, para que $\gamma$ sea una biyección. Entonces, tenemos
+$$c_1 : \Pic(M) \longrightarrow H^2(M), \qquad c_1(L) = \lambda \, \gamma(L)$$
+Por lo tanto, $c_1$ es un isomorfismo de grupos abelianos.
+\end{proof}
+
+\begin{remark}
+De hecho, con algo de cuidado, es posible demostrar que $\lambda = 1$.
+\end{remark}

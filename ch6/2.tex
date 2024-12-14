@@ -1,0 +1,69 @@
+\section{Homotopías huecas rellenables}
+
+Dos homotopías (¡no huecas!) $g_0, g_1 : M \times I \to \P^\infty$ forman un \textbf{relleno} entre dos homotopías huecas $h_0, h_1 : M^\square \to \P^\infty$ si\begin{itemize}
+    \itemsep 0em
+    \item $g_0$ comienza en el extremo inicial de $h_0$ y termina en el extremo inicial de $h_1$.
+    \item $g_1$ comienza en el extremo final de $h_0$ y termina en el extremo final de $h_1$.
+\end{itemize}
+Por otro lado, una homotopía hueca de homotopías huecas $H : M^{\square \square} \to \P^\infty$ se dice \textbf{rellenable} si existe una \textbf{cocadena de relleno} $r(H) \in C^1(M)$ tal que
+$$d(H) = r(H) \times \overline I \in C^2(M^\square).$$
+Esto equivale a decir que $H$ se puede extender sobre las caras verticales
+$$M^\parallel = M \times \{ 0, 1 \} \times I.$$
+Tal extensión se denomina un \textbf{relleno} de $H$.
+
+\begin{proposition}
+Sean $h_0, h_1 : M^\square \to \P^\infty$ dos homotopías huecas. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}[label=\alph*)]
+    \itemsep 0em
+    \item Existe un relleno $g_0, g_1 : M \times I \to \P^\infty$ entre $h_0$ y $h_1$.
+    \item Existe una homotopía hueca rellenable $H : M^{\square \square} \to \P^\infty$ entre $h_0$ y $h_1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+$a) \implies b)$ Definamos $H$, relleno incluido, por
+$$
+H(x,s,t) =
+  \begin{cases}
+    h_t(x,s), & \text{si } (x,s,t) \in M^\square \times \{ 0, 1 \}, \\
+    g_s(x,t), & \text{si } (x,s,t) \in M^\parallel.
+  \end{cases}
+$$
+
+$b) \implies a)$ Consideremos a $H$ ya rellenada, i.e., extendida sobre $M^\parallel$. Entonces,
+$$g_0, g_1 : M \times I \longrightarrow \P^\infty, \qquad g_i(x,t) = H(x,i,t).$$
+forman un relleno entre $h_0, h_1$.
+\end{proof}
+
+\begin{lemma}
+Sean $h_0, h_1 : M^\square \to \P^\infty$ dos homotopías huecas que satisfacen las condiciones de la proposición anterior. Entonces, la diferencia $d(h_1) - d(h_0)$ es igual a la cofrontera de la cocadena de relleno $r(H)$ de cualquier homotopía hueca rellenable $H : M^{\square \square} \to \P^\infty$ entre $h_0$ y $h_1$. Por lo tanto, la clase de cohomología de $d(h)$ sólo depende de las clases de homotopía de $f_0$ y $f_1$.
+\end{lemma}
+
+\begin{proof}
+Sea $H : M^{\square \square} \to \P^\infty$ una homotopía hueca rellenable entre $h_0, h_1$. Repitiendo el cálculo del lema 5.6, llegamos a la ecuación
+$$
+\underbrace {\delta r(H) \times \overline I}_{\delta d(H)}
+    = \underbrace {d(h_1) \times \overline I}_{c(h_1)}
+    - \underbrace {d(h_0) \times \overline I}_{c(h_0)}.
+$$
+Como la asignación $C^\bullet(M) \to C^\bullet(M \times I)$, $\alpha \mapsto \alpha \times \overline I$ es inyectiva, tenemos
+$$\delta r(H) = d(h_1) - d(h_0).$$
+Por lo tanto, $d(h_0)$ y $d(h_1)$ pertenecen a la misma clase de cohomología.
+\end{proof}
+
+\begin{lemma}
+Dadas una homotopía hueca $h : M^\square \to \P^\infty$ y una cocadena $r \in C^1(M)$, existe una homotopía hueca rellenable $H : M^{\square \square} \to \P^\infty$ que comienza en $h$, tal que $r(H) = r$. Por lo tanto, $d(h) + \delta r$ es el cociclo de diferencia de otra homotopía hueca entre los extremos de $h$.
+\end{lemma}
+
+\begin{proof}
+La homotopía hueca $H$ se construye usando el lema 6.5. Sea $h' : M^\square \to \P^\infty$ el extremo final de $H$ y sea $g_0, g_1 : M \times I \to \P^\infty$, el relleno entre $h, h'$ inducido por $H$. Entonces,
+$$\widetilde h = g_0 \star h' \star g_1^{-1} : M^\square \longrightarrow \P^\infty$$
+tiene los mismos extremos que $h$, pero su cociclo de diferencia es
+$$
+d(\widetilde h)
+    = \cancel {d(g_0)} + d(h') - \cancel {d(g_1)}
+    = d(h) + \delta r(H)
+    = d(h) + \delta r,
+$$
+donde cada $d(g_i)$ se anula porque $g_i$ es una homotopía no hueca.
+\end{proof}

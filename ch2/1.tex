@@ -1,0 +1,40 @@
+\section{Definiciones básicas}
+
+Por el teorema global de Frobenius, construir una foliación holomorfa regular por curvas (i.e., de dimensión $1$) de una variedad compleja $M$ es tan fácil o tan difícil como hallar un subfibrado lineal $L \subset M$. El isomorfismo canónico $L \otimes L^\vee \cong \O_M$ identifica la inclusión $L \hookrightarrow TM$ con una sección global sin ceros de $TM \otimes L^\vee$. Por lo tanto, toda foliación regular por curvas de $M$ está determinada por una sección global sin ceros de un fibrado tangente torcido\footnote{Por torcer un fibrado vectorial $E \to M$, nos referimos a reemplazar $E$ con $E \otimes L$, donde $L \to M$ es un fibrado lineal de nuestra elección. Una sección de $E \otimes L$ es localmente indistinguible de una sección del fibrado original $E$, pero la manera como se pegan globalmente las secciones difiere por el cociclo que determina a $L$.} $TM \otimes L$.
+
+Existen variedades complejas cuyos fibrados tangentes no poseen subfibrados lineales y, por lo tanto, no admiten foliaciones regulares por curvas. No obstante, queremos foliar tales variedades usando una sección de un fibrado tangente torcido $TM \otimes L$ para generar las hojas, ya que esto sigue siendo más conveniente que construir las hojas a mano. Sacrificando lo único que estamos dispuestos a sacrificar, llegamos a la siguiente definición.
+
+Una foliación $\F$ de $M$ se denomina una \textbf{foliación singular por curvas} si sus hojas son las curvas integrales maximales de una sección global de un fibrado tangente torcido $TM \otimes L$ cuyos ceros forman un subconjunto analítico $\Sing(\F) \subset M$ de codimensión $\ge 1$, llamado el \textbf{conjunto singular} de $\F$. Los puntos de $\Sing(\F)$ se denominan \textbf{puntos singulares} de $\F$.
+
+\begin{example}
+El conjunto vacío $\varnothing$ es un subconjunto analítico de cualquier variedad $M$, porque es el conjunto de ceros de la función constante $1$. Por convención, si $M$ es no vacía, entonces $\varnothing$ es de codimensión $\infty$, que ciertamente es $\ge 1$. Por lo tanto, toda foliación regular por curvas de $M$ también es una foliación singular por curvas de $M$.
+\end{example}
+
+\begin{remark}
+Según nuestra definición de foliación, las hojas de $\F$ son todas las curvas integrales de $\sigma$, incluyendo las degeneradas, i.e., los puntos singulares. Sin embargo, en la literatura, es más común llamar ``hojas de $\F$'' sólo a las curvas integrales que son curvas de verdad. Por ejemplo, \cite[p. 96]{soares} define $\F$ como una foliación regular por curvas sobre $M \setminus \Sing(\F)$.
+\end{remark}
+
+\begin{example}
+Sea $\F$ es una foliación regular por curvas, definida por los campos locales $X_j$, y sea $H$ una hipersuperficie de $M$, definida por las ecuaciones locales $h_j = 0$. Entonces los campos locales $h_j X_j$ definen una foliación $\F_H$ cuyo conjunto singular es $H$ y cuyas hojas de dimensión $1$ son las diferencias $L \setminus H$, donde $L$ es una hoja de $\F$ no contenida en $H$.
+\end{example}
+
+La foliación del ejemplo anterior es ``artificialmente singular'', en el sentido de que se obtuvo agregando un conjunto singular a una foliación regular. Por supuesto, este tipo de singularidades no es muy interesante. Más bien, lo digno de averiguar es qué tanto podemos encoger el conjunto singular de una foliación por curvas dada, sin alterar las hojas existentes de dimensión $1$.
+
+\begin{proposition}
+\label{divisor}
+Si $\F$ es una foliación singular por curvas, entonces existe una única foliación singular por curvas $\F'$ cuyo conjunto singular es de codimensión $\ge 2$ que contiene a las hojas de dimensión $1$ de $\F$.
+\end{proposition}
+
+\begin{proof}
+Por el teorema de preparación de Weierstrass, para cada punto $p \in M$, el anillo $\O_{M,p}$ de gérmenes de funciones holomorfas es un dominio noetheriano \cite[pp. 70-71]{ebeling} de factorización única \cite[pp. 72-73]{ebeling}. Entonces, los campos locales que definen a $\F$ se factorizan de manera esencialmente única como $h_j X_j$, donde $S_j = \Sing(X_j)$ es de codimensión $\ge 2$.
+
+A priori, la función de transición $g_{jk}$ entre los campos $X_j, X_k$ sólo es meromorfa, pues podría tener polos en la hipersuperficie local $h_j^{-1}(0)$. Sin embargo, $g_{jk}$ se extiende de manera continua y, por ende, holomorfa \cite[pp. 19-20]{gunning} al complemento de $S_j$. Entonces, el teorema de Hartogs garantiza que $g_{jk}$ es holomorfa en $S_j$ también.
+
+Por construcción, las funciones $g_{jk}$ determinan un fibrado lineal $L \to M$ (salvo isomorfismo), los campos $X_j$ determinan una sección global de $TM \otimes L$ y, por ende, una foliación singular por curvas $\F'$ tal que $\Sing(\F') = \bigcup_j S_j$. Esta unión se puede asumir localmente finita, porque $M$ es paracompacto. Entonces $\Sing(\F')$ es de codimensión $\ge 2$. Si $C \in \F$ es una hoja de dimensión $1$, entonces las funciones $h_j \vert_C$ son invertibles, así que $X_j \vert_C$ es tangente a $C$. Por lo tanto, $C$ es una hoja de $\F'$.
+\end{proof}
+
+La proposición anterior nos dice que las singularidades de codimensión $1$ de una foliación por curvas $\F$ son removibles si torcemos el fibrado tangente $TM$ de una manera adecuada, pero las singularidades de codimensión $\ge 2$ son obstrucciones no removibles a que $\F$ sea regular. Por lo tanto, siempre podemos asumir que $\Sing(\F)$ es de codimensión $\ge 2$.
+
+Argumentaremos heurísticamente que una foliación por curvas general ``no debería'' tener un conjunto singular demasiado grande. Supongamos que fuese posible construir una sección global general $\sigma$ de $TM \otimes L$ pegando secciones locales generales. Cada sección local es la gráfica de una función general $f : U \to \C^n$ cuyo conjunto de ceros es de dimensión $0$. Entonces la foliación por curvas generada por $\sigma$ tiene un conjunto singular de dimensión $0$.
+
+Por supuesto, una sección global de $TM \otimes L$ no se puede construir pegando secciones locales totalmente arbitrarias. Y, en efecto, existen variedades complejas que no admiten foliaciones por curvas cuyo conjuto singular es de dimensión $0$. Sin embargo, en este trabajo, sólo estudiaremos aquellas foliaciones por curvas cuyo conjunto singular es de dimensión $0$.

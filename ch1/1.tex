@@ -1,0 +1,37 @@
+\section{Definiciones básicas}
+
+Sea $M$ una variedad compleja. Una \textbf{foliación holomorfa} $\F$ de $M$ es una partición de $M$ en subvariedades conexas inyectivamente inmersas en $M$, llamadas las \textbf{hojas} de $\F$. Diremos que $\F$ es una \textbf{foliación regular} de dimensión $k$ si, localmente, es isomorfa a la partición del polidisco unitario $\Delta^n \subset \C^n$ en la colección de polidiscos $\Delta^k \times \{ z \}$, $z \in \Delta^{n-k}$, en un sentido que haremos preciso a continuación.
+
+Una \textbf{carta distinguida} de rango $k$ es un biholomorfismo $\varphi : U \to \Delta^k \times \Delta^{n-k}$ definido en un subconjunto abierto $U \subset M$. Las \textbf{placas} de $\varphi$ son las preimágenes $\varphi(\Delta^k \times \{ z \})$, $z \in \Delta^{n-k}$. Esta carta se dice \textbf{compatible} con $\F$ si, para cada hoja $L \in \F$, la intersección $U \cap L$ es la unión de una cantidad numerable de placas de $\varphi$. Entonces $\F$ es una foliación regular de dimensión $k$ si y solamente si $M$ admite un atlas holomorfo de cartas distinguidas compatibles con $\F$.
+
+\begin{example}[Foliación por curvas integrales]
+Dado un campo vectorial holomorfo $X$ sobre $M$ sin singularidades, las curvas integrales de $X$ son una foliación regular de $M$ de dimensión $1$. En este caso, el teorema del flujo tubular nos da las cartas distinguidas de esta foliación.
+\end{example}
+
+\begin{remark}
+La existencia de un campo vectorial holomorfo no nulo es una restricción no trivial sobre $M$. Por ejemplo, si $M$ es una superficie de Riemann compacta de género $g \ge 2$, entonces su grupo de automorfismos es finito\footnote{De orden a lo más $84 (g - 1)$, por el teorema de los automorfismos de Hurwitz.}, por ende no existen campos no nulos sobre $M$.
+\end{remark}
+
+\begin{example}[Una foliación muy mal comportada]
+Sea $\C^2$ el plano afín complejo, foliado de la siguiente manera. Una hoja es la gráfica de una función entera $y = f(x)$. Las demás hojas son las rectas verticales $x = c$, menos el punto $(c, f(c))$.
+
+Asignemos a cada punto $p \in \C^2$ la recta $L_p \subset \C^2$ tangente a la hoja que pasa por $p$. En una foliación bien comportada, se espera que $L_p$ dependa ``continuamente'' de $p$. Pero, si $p$ varía a lo largo de la recta $x = c$, entonces la pendiente de $L_p$ varía abruptamente en el punto $(c, f(c))$.
+\end{example}
+
+\begin{remark}
+Esta foliación no es de interés geométrico intrínseco, pero nos ayudará a encontrar una topología apropiada para el grassmanniano en la sección 3.3.
+\end{remark}
+
+\begin{example}[Flujo lineal sobre un toro]
+El campo vectorial holomorfo
+$$X = a_1 \, \p {z_1} + \dots + a_n \, \p {z_n}$$
+es invariante por traslaciones de $\C^2$. Entonces $X$ desciende al grupo cociente
+$$G = \dfrac {\C^n} {\Z[i]^n} \cong \left( \dfrac \R \Z \right)^{2n}$$
+y sus curvas integrales son las clases laterales del subgrupo uniparamétrico
+$$H = \dfrac \Gamma {\Gamma \cap \Z[i]^2} \subset G,$$
+donde $\Gamma \subset \C^n$ es la recta compleja generada por $v = (a_1, \dots, a_n) \in \C^n$.
+
+Si las partes reales e imaginarias de $a_1, \dots, a_n$ son racionalmente independientes, entonces la imagen de la recta \textit{real} generada por $v$ es densa\footnote{Este resultado se conoce como el teorema de la densidad de Kronecker.} en $G$. Por ende, $H$ también es denso en $G$. En particular, si $\varphi$ es una carta foliada de $G$, entonces $H$ contiene infinitas placas de $\varphi$.
+\end{example}
+
+La definición de foliación holomorfa que tenemos hasta el momento requiere que conozcamos de antemano las hojas de $\F$. Este requerimiento es demasiado oneroso, porque, en general, una foliación tiene una cantidad no numerable de hojas y no es posible hallar una única ecuación que las describa a todas. En la siguiente sección, buscaremos maneras de reconstruir una foliación a partir de información más concisa que la colección de todas sus hojas.

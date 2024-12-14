@@ -1,0 +1,78 @@
+\section{Definiciones básicas}
+
+La definición de las clases de Chern $c_i(E)$ dada en el capítulo anterior puede dar la impresión de que estas clases son sólo un juego algebraico cuya única virtud es que es fácil de jugar. Hasta este momento, lo más cercano que tenemos a una interpretación de las clases de Chern $c_i(E)$ es que, si $E \to M$ es un fibrado vectorial complejo de rango $n$, entonces la clase total $c(E)$ describe de manera $S_n$-invariante los cocientes lineales $F_j / F_{j-1}$ de una bandera completa
+$$0 = F_0 \subset F_1 \subset \dots \subset F_n = f^\star E,$$
+donde $f : N \to M$ es una función que rompe totalmente a $E$.
+
+En este capítulo, daremos una interpretación geométrica \textit{útil} a las clases de Chern. Para ello, supondremos dado un fibrado vectorial complejo $E \to M$ de rango $n = k+q$ sobre un \textbf{complejo celular}\footnote{Todo complejo celular es paracompacto \cite[pp. 36-37]{hatcher2}.} $M$ e intentaremos construir $k$ secciones globales $M \to E$ linealmente independientes en cada punto $p \in M$. Esto equivale a construir una única sección del \textbf{fibrado de marcos}
+$$V_k(E) = \bigsqcup_{p \in M} \{ p \} \times V_k(E_p),$$
+cuya fibra típica es el espacio de Stiefel $V_k(\C^n)$. Nuestro objetivo no es dar una  mera respuesta binaria, i.e., decir si existen las $k$ secciones solicitadas, sino \textit{cuantificar} las razones por las cuales tales secciones existen o no existen.
+
+Pensemos en una sección global de $V_k(E)$ como el límite de una sucesión de secciones
+$$\sigma^j : M^j \longrightarrow V^j = V_k(E) \Big \vert_{M^j}$$
+definidas sobre los esqueletos de $M$. Esta sucesión se construye inductivamente, asumiendo dada una sección de $V^j$ y extendiéndola a una sección de $V^{j+1}$. Puesto que $M^{j+1} \setminus M^j$ es una unión topológicamente disjunta de $(j+1)$-células, en principio, la extensión de $\sigma^j$ a cada $(j+1)$-célula se puede construir de manera independiente.
+
+Fijemos una $(j+1)$-célula $e_\alpha \subset M$ y consideremos su \textbf{función característica}
+$$\Phi_\alpha : (D^{j+1}, S^j) \longrightarrow (M^{j+1}, M^j).$$
+Para extender $\sigma^j$ sobre $e_\alpha$, debemos cerrar el diagrama conmutativo
+$$
+\begin{tikzcd}[row sep = huge, column sep = huge]
+    S^j \arrow[d, hook] \arrow[rd, "f_\alpha"] \\
+    D^{j+1} \arrow[r, dashed] & V_k(\C^n),
+\end{tikzcd}
+$$
+donde $f_\alpha$ es una representación coordenada de la sección pullback
+$$\varphi_\alpha^\star(\sigma^j) : S^j \longrightarrow \varphi_\alpha^\star \circ V_k(E) \cong S^j \times V_k(\C^n)$$
+a lo largo de la restricción $\varphi_\alpha = \Phi_\alpha \big \vert_{S^j}$. Entonces, la condición necesaria y suficiente para que el problema de extensión tenga solución es que $f_\alpha$ es nulhomotópica.
+
+\begin{theorem}
+Para todo $k \ge 1$, el espacio de Stiefel $V_k(\C^n)$ es $2q$-conexo y su primer grupo de homotopía no trivial $\pi_{2q+1} \circ V_k(\C^n)$ es \underline{canónicamente} isomorfo a $\Z$. Por lo tanto, tiene sentido escribir $\pi_{2q+1} \circ V_k(\C^n)$ sin mencionar un punto de referencia en $V_k(\C^n)$.
+\end{theorem}
+
+\begin{proof}
+Fijemos $q$, abreviemos $V_k = V_k(\C^{k+q})$ y consideremos el fibrado
+$$
+\begin{tikzcd}[row sep = large, column sep = large]
+    V_k \arrow[r, "i"] & V_{k+1} \arrow[r] & V_1(\C^{n+1}) \simeq S^{2n+1}.
+\end{tikzcd}
+$$
+La sucesión exacta larga de grupos de homotopía de este fibrado es
+$$
+\begin{tikzcd}
+    \dots \arrow[r]
+        & \pi_j(V_k) \arrow[r, "i_j"]
+        & \pi_j(V_{k+1}) \arrow[r]
+        & \pi_j(S^{2n+1}) \arrow[r, "\partial_j"]
+        & \pi_{j-1}(V_k) \arrow[r]
+        & \dots
+\end{tikzcd}
+$$
+Como la esfera $S^{2n+1}$ es $2n$-conexa, $i_j$ es un isomorfismo para todo $j < 2n$. Este isomorfismo es canónico, porque la acción local de $\GL_k(\C)$ respeta la orientación de la fibra típica $V_k$. Entonces, por inducción en $k$, tenemos isomorfismos canónicos
+$$
+\pi_j \circ V_k(\C^n) = \pi_j(V_k) \cong \pi_j(V_1) \cong \pi_j(S^{2q+1}) \cong
+    \begin{cases}
+        0,  & \text{si } j \le 2q, \\
+        \Z, & \text{si } j  =  2q + 1,
+    \end{cases}
+$$
+donde hemos usado la orientación de $V_1$ inducida por la inclusión en $\C^{q+1}$.
+\end{proof}
+
+\begin{remark}
+En general, dados un grupo de Lie $G$ y un subgrupo de Lie cerrado y conexo $H$, el espacio homogéneo $G/H$ es \textbf{simple}, i.e., su grupo fundamental $\pi_1(G/H)$ es abeliano y actúa de manera trivial sobre \textit{todos} los grupos de homotopía $\pi_j(G/H)$ \cite[p. 89]{steenrod}. Esto implica que los grupos $\pi_j(G/H)$ están bien definidos, salvo un isomorfismo canónico, sin mencionar un punto de referencia en $G/H$.
+\end{remark}
+
+\begin{corollary}
+Todo fibrado vectorial complejo $E \to M$ de rango $n = k+q$ posee $k$ secciones linealmente independientes sobre el $(2q+1)$-esqueleto de $M$.
+\end{corollary}
+
+\begin{proof}
+Dichas secciones se construyen célula por célula cerrando diagramas
+$$
+\begin{tikzcd}[row sep = huge, column sep = huge]
+    S^j \arrow[d, hook] \arrow[rd, "f_\alpha"] \\
+    D^{j+1} \arrow[r, dashed] & V_k(\C^n),
+\end{tikzcd}
+$$
+con $j \le 2q$. Puesto que $V_k(\C^n)$ es $2q$-conexo, en cada uno de estos problemas de extensión, $f_\alpha$ es nulhomotópica y, por ende, el problema tiene solución.
+\end{proof}
